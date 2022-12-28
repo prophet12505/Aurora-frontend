@@ -1530,7 +1530,7 @@ table tbody {
 .off-canvas-wrapper .off-canvas-overlay {
     background-color: rgba(0, 0, 0, 0.4);
     content: "";
-    cursor: url("../img/icon/cancel.png"), auto;
+    cursor: url("public/img/icon/cancel.png"), auto;
     position: absolute;
     left: 0;
     top: 0;
