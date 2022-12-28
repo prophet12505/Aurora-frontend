@@ -1,6 +1,7 @@
 import React from 'react';
-import "../css/style.css";
+import "../assets/css/style.css";
 import "../css/vendor.css";
+//./src/assets/css/style.css
 const Header = () => {
     return (
         <div>
@@ -21,7 +22,7 @@ const Header = () => {
                                         <ul className="nav align-items-center">
                                             <li className="account-settings">
                                                 My account
-                                                <i className="fa fa-angle-down"/>
+                                                <i className="fa fa-angle-down" />
                                                 <ul className="dropdown-list account-list">
                                                     <li><a href="my-account.html">my account</a></li>
                                                     <li><a href="login-register.html">login register</a></li>
@@ -31,21 +32,21 @@ const Header = () => {
                                             </li>
                                             <li className="curreny-wrap">
                                                 $ USD
-                                                <i className="fa fa-angle-down"/>
+                                                <i className="fa fa-angle-down" />
                                                 <ul className="dropdown-list curreny-list">
                                                     <li><a href="#">$ usd</a></li>
                                                     <li><a href="#"> € EURO</a></li>
                                                 </ul>
                                             </li>
                                             <li className="language">
-                                                <img src="assets/img/icon/en.png" alt=""/>
+                                                <img src="assets/img/icon/en.png" alt="" />
                                                 English
-                                                <i className="fa fa-angle-down"/>
+                                                <i className="fa fa-angle-down" />
                                                 <ul className="dropdown-list">
                                                     <li><a href="#"><img src="assets/img/icon/en.png"
-                                                                         alt=""/> english</a></li>
+                                                        alt="" /> english</a></li>
                                                     <li><a href="#"><img src="assets/img/icon/fr.png"
-                                                                         alt=""/> french</a>
+                                                        alt="" /> french</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -64,7 +65,9 @@ const Header = () => {
                                 <div className="col-lg-3">
                                     <div className="logo">
                                         <a href="index.html">
-                                            <img src="assets/img/logo/logo.png" alt=""/>
+                                            <img src="../assets/img/logo/logo.png" alt="logo" />
+                                            {/* <img src="../a" alt="" /> */}
+                                            {/* <img src="../" alt="" /> */}
                                         </a>
                                     </div>
                                 </div>
@@ -76,7 +79,7 @@ const Header = () => {
                                             <form className="search-box-inner">
                                                 <div className="search-field-wrap">
                                                     <input type="text" className="search-field"
-                                                           placeholder="Enter your search key"/>
+                                                        placeholder="Enter your search key" />
                                                 </div>
                                                 <div className="search-select-box">
                                                     <select>
@@ -99,7 +102,7 @@ const Header = () => {
                                                     </select>
                                                 </div>
                                                 <div className="search-btn">
-                                                    <button><i className="ion-ios-search"/></button>
+                                                    <button><i className="ion-ios-search" /></button>
                                                 </div>
                                             </form>
                                         </div>
@@ -112,20 +115,20 @@ const Header = () => {
                                         <ul className="nav justify-content-end">
                                             <li>
                                                 <a href="wishlist.html">
-                                                    <i className="ion-android-favorite-outline"/>
+                                                    <i className="ion-android-favorite-outline" />
                                                     <span className="notification">0</span>
                                                 </a>
                                             </li>
                                             <li className="mini-cart-wrap">
                                                 <a href="cart.html">
-                                                    <i className="ion-bag"/>
+                                                    <i className="ion-bag" />
                                                     <span className="notification">2</span>
                                                 </a>
                                                 <ul className="cart-list">
                                                     <li>
                                                         <div className="cart-img">
                                                             <a href="product-details.html"><img
-                                                                src="assets/img/cart/cart-1.jpg" alt=""/></a>
+                                                                src="assets/img/cart/cart-1.jpg" alt="" /></a>
                                                         </div>
                                                         <div className="cart-info">
                                                             <h4><a href="product-details.html">simple product</a></h4>
@@ -133,13 +136,13 @@ const Header = () => {
                                                             <span>$60.00</span>
                                                         </div>
                                                         <div className="del-icon">
-                                                            <i className="fa fa-times"/>
+                                                            <i className="fa fa-times" />
                                                         </div>
                                                     </li>
                                                     <li>
                                                         <div className="cart-img">
                                                             <a href="product-details.html"><img
-                                                                src="assets/img/cart/cart-2.jpg" alt=""/></a>
+                                                                src="assets/img/cart/cart-2.jpg" alt="" /></a>
                                                         </div>
                                                         <div className="cart-info">
                                                             <h4><a href="product-details.html">virtual product</a></h4>
@@ -147,7 +150,7 @@ const Header = () => {
                                                             <span>$100.00</span>
                                                         </div>
                                                         <div className="del-icon">
-                                                            <i className="fa fa-times"/>
+                                                            <i className="fa fa-times" />
                                                         </div>
                                                     </li>
                                                     <li className="mini-cart-price">
@@ -177,9 +180,9 @@ const Header = () => {
                                 <div className="col-lg-3">
                                     <div className="category-toggle-wrap">
                                         <div className="category-toggle">
-                                            <i className="ion-android-menu"/>
+                                            <i className="ion-android-menu" />
                                             all categories
-                                            <span><i className="ion-android-arrow-dropdown"/></span>
+                                            <span><i className="ion-android-arrow-dropdown" /></span>
                                         </div>
                                         <nav className="category-menu">
                                             <ul className="categories-list">
@@ -303,7 +306,7 @@ const Header = () => {
                                         <nav className="desktop-menu">
                                             <ul>
                                                 <li className="active"><a href="index.html">Home <i
-                                                    className="fa fa-angle-down"/></a>
+                                                    className="fa fa-angle-down" /></a>
                                                     <ul className="dropdown">
                                                         <li><a href="index.html">Home version 01</a></li>
                                                         <li><a href="index-2.html">Home version 02</a></li>
@@ -313,7 +316,7 @@ const Header = () => {
                                                         <li><a href="index-6.html">Home version 06</a></li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="#">pages <i className="fa fa-angle-down"/></a>
+                                                <li><a href="#">pages <i className="fa fa-angle-down" /></a>
                                                     <ul className="megamenu dropdown">
                                                         <li className="mega-title"><a href="#">column 01</a>
                                                             <ul>
@@ -362,10 +365,10 @@ const Header = () => {
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="shop.html">shop <i className="fa fa-angle-down"/></a>
+                                                <li><a href="shop.html">shop <i className="fa fa-angle-down" /></a>
                                                     <ul className="dropdown">
                                                         <li><a href="#">shop grid layout <i
-                                                            className="fa fa-angle-right"/></a>
+                                                            className="fa fa-angle-right" /></a>
                                                             <ul className="dropdown">
                                                                 <li><a href="shop.html">shop grid left sidebar</a></li>
                                                                 <li><a href="shop-grid-right-sidebar.html">shop grid
@@ -378,7 +381,7 @@ const Header = () => {
                                                             </ul>
                                                         </li>
                                                         <li><a href="#">shop list layout <i
-                                                            className="fa fa-angle-right"/></a>
+                                                            className="fa fa-angle-right" /></a>
                                                             <ul className="dropdown">
                                                                 <li><a href="shop-list-left-sidebar.html">shop list left
                                                                     sidebar</a></li>
@@ -390,7 +393,7 @@ const Header = () => {
                                                             </ul>
                                                         </li>
                                                         <li><a href="#">products details <i
-                                                            className="fa fa-angle-right"/></a>
+                                                            className="fa fa-angle-right" /></a>
                                                             <ul className="dropdown">
                                                                 <li><a href="product-details.html">product details</a>
                                                                 </li>
@@ -417,7 +420,7 @@ const Header = () => {
                                                     </ul>
                                                 </li>
                                                 <li><a href="blog-left-sidebar.html">Blog <i
-                                                    className="fa fa-angle-down"/></a>
+                                                    className="fa fa-angle-down" /></a>
                                                     <ul className="dropdown">
                                                         <li><a href="blog-left-sidebar.html">blog left sidebar</a></li>
                                                         <li><a href="blog-left-sidebar-2-col.html">blog left sidebar 2
@@ -450,7 +453,7 @@ const Header = () => {
                                 <div className="col-lg-2">
                                     <div className="contact-top">
                                         <div className="contact-top-icon">
-                                            <img src="assets/img/icon/download.png" alt=""/>
+                                            <img src="assets/img/icon/download.png" alt="" />
                                         </div>
                                         <div className="contact-top-info">
                                             <p>call us now</p>
@@ -475,7 +478,7 @@ const Header = () => {
                                         <ul className="nav align-items-center justify-content-center">
                                             <li className="account-settings">
                                                 My account
-                                                <i className="fa fa-angle-down"/>
+                                                <i className="fa fa-angle-down" />
                                                 <ul className="dropdown-list account-list">
                                                     <li><a href="#">my account</a></li>
                                                     <li><a href="#">login register</a></li>
@@ -485,21 +488,21 @@ const Header = () => {
                                             </li>
                                             <li className="curreny-wrap">
                                                 $ USD
-                                                <i className="fa fa-angle-down"/>
+                                                <i className="fa fa-angle-down" />
                                                 <ul className="dropdown-list curreny-list">
                                                     <li><a href="#">$ usd</a></li>
                                                     <li><a href="#"> € EURO</a></li>
                                                 </ul>
                                             </li>
                                             <li className="language">
-                                                <img src="assets/img/icon/en.png" alt=""/>
+                                                <img src="assets/img/icon/en.png" alt="" />
                                                 English
-                                                <i className="fa fa-angle-down"/>
+                                                <i className="fa fa-angle-down" />
                                                 <ul className="dropdown-list">
                                                     <li><a href="#"><img src="assets/img/icon/en.png"
-                                                                         alt=""/> english</a></li>
+                                                        alt="" /> english</a></li>
                                                     <li><a href="#"><img src="assets/img/icon/fr.png"
-                                                                         alt=""/> french</a>
+                                                        alt="" /> french</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -511,19 +514,20 @@ const Header = () => {
                                 <div className="mobile-main-header">
                                     <div className="mobile-logo">
                                         <a href="index.html">
-                                            <img src="assets/img/logo/logo.png" alt="Brand Logo"/>
+                                            <img src="../assets/img/logo/logo.png" alt="Brand Logo" />
+                                            
                                         </a>
                                     </div>
                                     <div className="mobile-menu-toggler">
                                         <div className="mini-cart-wrap">
                                             <a href="cart.html">
-                                                <i className="ion-bag"/>
+                                                <i className="ion-bag" />
                                                 <span className="notification">2</span>
                                             </a>
                                         </div>
                                         <div className="mobile-menu-btn">
                                             <div className="off-canvas-btn">
-                                                <i className="ion-android-menu"/>
+                                                <i className="ion-android-menu" />
                                             </div>
                                         </div>
                                     </div>
@@ -532,9 +536,9 @@ const Header = () => {
                             <div className="col-12">
                                 <div className="category-toggle-wrap">
                                     <div className="category-toggle">
-                                        <i className="ion-android-menu"/>
+                                        <i className="ion-android-menu" />
                                         all categories
-                                        <span><i className="ion-android-arrow-dropdown"/></span>
+                                        <span><i className="ion-android-arrow-dropdown" /></span>
                                     </div>
                                     <nav className="category-menu">
                                         <ul className="categories-list">
