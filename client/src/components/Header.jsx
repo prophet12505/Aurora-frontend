@@ -5,6 +5,7 @@ import "../assets/css/vendor.css";
 const Header = () => {
     return (
         // header component
+        //
         <div>
             <header className="header-area">
                 {/* main header start */}
