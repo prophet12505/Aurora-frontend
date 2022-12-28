@@ -1,6 +1,6 @@
 import React from 'react';
 import "../assets/css/style.css";
-import "../css/vendor.css";
+import "../assets/css/vendor.css";
 //./src/assets/css/style.css
 const Header = () => {
     return (
@@ -14,7 +14,7 @@ const Header = () => {
                             <div className="row align-items-center">
                                 <div className="col-lg-6">
                                     <div className="welcome-message">
-                                        <p>Welcome to Ostromi Online Shopping Store !</p>
+                                        <p>Welcome to Aurora Online Shopping Store !</p>
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
@@ -30,26 +30,8 @@ const Header = () => {
                                                     <li><a href="checkout.html">checkout</a></li>
                                                 </ul>
                                             </li>
-                                            <li className="curreny-wrap">
-                                                $ USD
-                                                <i className="fa fa-angle-down" />
-                                                <ul className="dropdown-list curreny-list">
-                                                    <li><a href="#">$ usd</a></li>
-                                                    <li><a href="#"> € EURO</a></li>
-                                                </ul>
-                                            </li>
-                                            <li className="language">
-                                                <img src="assets/img/icon/en.png" alt="" />
-                                                English
-                                                <i className="fa fa-angle-down" />
-                                                <ul className="dropdown-list">
-                                                    <li><a href="#"><img src="assets/img/icon/en.png"
-                                                        alt="" /> english</a></li>
-                                                    <li><a href="#"><img src="assets/img/icon/fr.png"
-                                                        alt="" /> french</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
+                                          
+                                         
                                         </ul>
                                     </div>
                                 </div>
@@ -64,9 +46,9 @@ const Header = () => {
                                 {/* start logo area */}
                                 <div className="col-lg-3">
                                     <div className="logo">
-                                        <a href="index.html">
-                                            <img src="../assets/img/logo/logo.png" alt="logo" />
-                                            {/* <img src="../a" alt="" /> */}
+                                        <a href="/">
+                                            {/* <img src="../assets/img/logo/logo.png" alt="logo" /> */}
+                                            <img src="logo.png" alt="logo" />
                                             {/* <img src="../" alt="" /> */}
                                         </a>
                                     </div>
@@ -81,7 +63,7 @@ const Header = () => {
                                                     <input type="text" className="search-field"
                                                         placeholder="Enter your search key" />
                                                 </div>
-                                                <div className="search-select-box">
+                                                {/* <div className="search-select-box">
                                                     <select>
                                                         <optgroup label="organic food">
                                                             <option value="volvo">All categories</option>
@@ -100,7 +82,7 @@ const Header = () => {
                                                             <option value="audi">Handbag</option>
                                                         </optgroup>
                                                     </select>
-                                                </div>
+                                                </div> */}
                                                 <div className="search-btn">
                                                     <button><i className="ion-ios-search" /></button>
                                                 </div>
@@ -177,130 +159,8 @@ const Header = () => {
                     <div className="main-menu-area theme-color-2 sticky">
                         <div className="container">
                             <div className="row align-items-center">
-                                <div className="col-lg-3">
-                                    <div className="category-toggle-wrap">
-                                        <div className="category-toggle">
-                                            <i className="ion-android-menu" />
-                                            all categories
-                                            <span><i className="ion-android-arrow-dropdown" /></span>
-                                        </div>
-                                        <nav className="category-menu">
-                                            <ul className="categories-list">
-                                                <li className="menu-item-has-children"><a href="shop.html">Fruits &amp;
-                                                    Vegetables</a>
-                                                    {/* Mega Category Menu Start */}
-                                                    <ul className="category-mega-menu dropdown">
-                                                        <li className="menu-item-has-children">
-                                                            <a href="shop.html">Smartphone</a>
-                                                            <ul className="dropdown">
-                                                                <li><a href="shop.html">Samsome</a></li>
-                                                                <li><a href="shop.html">GL Stylus</a></li>
-                                                                <li><a href="shop.html">Uawei</a></li>
-                                                                <li><a href="shop.html">Cherry Berry</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li className="menu-item-has-children">
-                                                            <a href="shop.html">headphone</a>
-                                                            <ul className="dropdown">
-                                                                <li><a href="shop.html">Desktop Headphone</a></li>
-                                                                <li><a href="shop.html">Mobile Headphone</a></li>
-                                                                <li><a href="shop.html">Wireless Headphone</a></li>
-                                                                <li><a href="shop.html">LED Headphone</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li className="menu-item-has-children">
-                                                            <a href="shop.html">accessories</a>
-                                                            <ul className="dropdown">
-                                                                <li><a href="shop.html">Power Bank</a></li>
-                                                                <li><a href="shop.html">Data Cable</a></li>
-                                                                <li><a href="shop.html">Power Cable</a></li>
-                                                                <li><a href="shop.html">Battery</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li className="menu-item-has-children">
-                                                            <a href="shop.html">headphone</a>
-                                                            <ul className="dropdown">
-                                                                <li><a href="shop.html">Desktop Headphone</a></li>
-                                                                <li><a href="shop.html">Mobile Headphone</a></li>
-                                                                <li><a href="shop.html">Wireless Headphone</a></li>
-                                                                <li><a href="shop.html">LED Headphone</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                    {/* Mega Category Menu End */}
-                                                </li>
-                                                <li className="menu-item-has-children"><a href="shop.html">Fresh
-                                                    Meat</a>
-                                                    {/* Mega Category Menu Start */}
-                                                    <ul className="category-mega-menu dropdown three-column">
-                                                        <li className="menu-item-has-children">
-                                                            <a href="shop.html">Smartphone</a>
-                                                            <ul className="dropdown">
-                                                                <li><a href="shop.html">Samsome</a></li>
-                                                                <li><a href="shop.html">GL Stylus</a></li>
-                                                                <li><a href="shop.html">Uawei</a></li>
-                                                                <li><a href="shop.html">Cherry Berry</a></li>
-                                                                <li><a href="shop.html">uPhone</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li className="menu-item-has-children">
-                                                            <a href="shop.html">headphone</a>
-                                                            <ul className="dropdown">
-                                                                <li><a href="shop.html">Desktop Headphone</a></li>
-                                                                <li><a href="shop.html">Mobile Headphone</a></li>
-                                                                <li><a href="shop.html">Wireless Headphone</a></li>
-                                                                <li><a href="shop.html">LED Headphone</a></li>
-                                                                <li><a href="shop.html">Over-ear</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li className="menu-item-has-children">
-                                                            <a href="shop.html">accessories</a>
-                                                            <ul className="dropdown">
-                                                                <li><a href="shop.html">Power Bank</a></li>
-                                                                <li><a href="shop.html">Data Cable</a></li>
-                                                                <li><a href="shop.html">Power Cable</a></li>
-                                                                <li><a href="shop.html">Battery</a></li>
-                                                                <li><a href="shop.html">OTG Cable</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                    {/* Mega Category Menu End */}
-                                                </li>
-                                                <li className="menu-item-has-children"><a
-                                                    href="shop.html">dairy &amp; eggs</a>
-                                                    {/* Mega Category Menu Start */}
-                                                    <ul className="category-mega-menu dropdown two-column">
-                                                        <li className="menu-item-has-children">
-                                                            <a href="shop.html">Smartphone</a>
-                                                            <ul className="dropdown">
-                                                                <li><a href="shop.html">Samsome</a></li>
-                                                                <li><a href="shop.html">GL Stylus</a></li>
-                                                                <li><a href="shop.html">Uawei</a></li>
-                                                                <li><a href="shop.html">Cherry Berry</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li className="menu-item-has-children">
-                                                            <a href="shop.html">headphone</a>
-                                                            <ul className="dropdown">
-                                                                <li><a href="shop.html">Desktop Headphone</a></li>
-                                                                <li><a href="shop.html">Mobile Headphone</a></li>
-                                                                <li><a href="shop.html">Wireless Headphone</a></li>
-                                                                <li><a href="shop.html">LED Headphone</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                    {/* Mega Category Menu End */}
-                                                </li>
-                                                <li><a href="shop.html">Frozen</a></li>
-                                                <li><a href="shop.html">Grocery</a></li>
-                                                <li><a href="shop.html">Kitchenware</a></li>
-                                                <li><a href="shop.html">Tools</a></li>
-                                                <li><a href="shop.html">Electronics</a></li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                                <div className="col-lg-7">
+                                
+                                <div className="col-lg-10">
                                     <div className="main-menu home-main">
                                         {/* main menu navbar start */}
                                         <nav className="desktop-menu">
@@ -367,82 +227,12 @@ const Header = () => {
                                                 </li>
                                                 <li><a href="shop.html">shop <i className="fa fa-angle-down" /></a>
                                                     <ul className="dropdown">
-                                                        <li><a href="#">shop grid layout <i
-                                                            className="fa fa-angle-right" /></a>
-                                                            <ul className="dropdown">
-                                                                <li><a href="shop.html">shop grid left sidebar</a></li>
-                                                                <li><a href="shop-grid-right-sidebar.html">shop grid
-                                                                    right
-                                                                    sidebar</a></li>
-                                                                <li><a href="shop-grid-full-3-col.html">shop grid full 3
-                                                                    col</a></li>
-                                                                <li><a href="shop-grid-full-4-col.html">shop grid full 4
-                                                                    col</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li><a href="#">shop list layout <i
-                                                            className="fa fa-angle-right" /></a>
-                                                            <ul className="dropdown">
-                                                                <li><a href="shop-list-left-sidebar.html">shop list left
-                                                                    sidebar</a></li>
-                                                                <li><a href="shop-list-right-sidebar.html">shop list
-                                                                    right
-                                                                    sidebar</a></li>
-                                                                <li><a href="shop-list-full-width.html">shop list full
-                                                                    width</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li><a href="#">products details <i
-                                                            className="fa fa-angle-right" /></a>
-                                                            <ul className="dropdown">
-                                                                <li><a href="product-details.html">product details</a>
-                                                                </li>
-                                                                <li><a href="product-details-affiliate.html">product
-                                                                    details
-                                                                    affiliate</a></li>
-                                                                <li><a href="product-details-variable.html">product
-                                                                    details
-                                                                    variable</a></li>
-                                                                <li><a href="product-details-group.html">product details
-                                                                    group</a></li>
-                                                                <li><a href="product-details-box.html">product details
-                                                                    box</a></li>
-                                                                <li><a href="product-details-sticky-left.html">product
-                                                                    details sticky left</a></li>
-                                                                <li><a href="product-details-sticky-right.html">product
-                                                                    details sticky right</a></li>
-                                                                <li><a href="product-details-gallery-left.html">product
-                                                                    details gallery left</a></li>
-                                                                <li><a href="product-details-gallery-right.html">product
-                                                                    details gallery right</a></li>
-                                                            </ul>
-                                                        </li>
+                                                        
                                                     </ul>
                                                 </li>
                                                 <li><a href="blog-left-sidebar.html">Blog <i
                                                     className="fa fa-angle-down" /></a>
-                                                    <ul className="dropdown">
-                                                        <li><a href="blog-left-sidebar.html">blog left sidebar</a></li>
-                                                        <li><a href="blog-left-sidebar-2-col.html">blog left sidebar 2
-                                                            col</a></li>
-                                                        <li><a href="blog-right-sidebar.html">blog right sidebar</a>
-                                                        </li>
-                                                        <li><a href="blog-right-sidebar-2-col.html">blog right sidebar 2
-                                                            col</a></li>
-                                                        <li><a href="blog-grid-full-width.html">blog grid full width</a>
-                                                        </li>
-                                                        <li><a href="blog-list-full-width.html">blog list full width</a>
-                                                        </li>
-                                                        <li><a href="blog-details.html">blog details</a></li>
-                                                        <li><a href="blog-details-left-sidebar.html">blog details left
-                                                            sidebar</a></li>
-                                                        <li><a href="blog-details-audio.html">blog details audio</a>
-                                                        </li>
-                                                        <li><a href="blog-details-video.html">blog details video</a>
-                                                        </li>
-                                                        <li><a href="blog-details-image.html">blog details image</a>
-                                                        </li>
-                                                    </ul>
+                                                    
                                                 </li>
                                                 <li><a href="contact-us.html">Contact us</a></li>
                                             </ul>
@@ -456,8 +246,8 @@ const Header = () => {
                                             <img src="assets/img/icon/download.png" alt="" />
                                         </div>
                                         <div className="contact-top-info">
-                                            <p>call us now</p>
-                                            <a href="#">+88.2345.6789</a>
+                                            <p>Contact me</p>
+                                            <a href="#"><a href="mailto:prophet12505@gmail.com">prophet12505@gmail.com</a></a>
                                         </div>
                                     </div>
                                 </div>
@@ -486,26 +276,7 @@ const Header = () => {
                                                     <li><a href="#">checkout</a></li>
                                                 </ul>
                                             </li>
-                                            <li className="curreny-wrap">
-                                                $ USD
-                                                <i className="fa fa-angle-down" />
-                                                <ul className="dropdown-list curreny-list">
-                                                    <li><a href="#">$ usd</a></li>
-                                                    <li><a href="#"> € EURO</a></li>
-                                                </ul>
-                                            </li>
-                                            <li className="language">
-                                                <img src="assets/img/icon/en.png" alt="" />
-                                                English
-                                                <i className="fa fa-angle-down" />
-                                                <ul className="dropdown-list">
-                                                    <li><a href="#"><img src="assets/img/icon/en.png"
-                                                        alt="" /> english</a></li>
-                                                    <li><a href="#"><img src="assets/img/icon/fr.png"
-                                                        alt="" /> french</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
+                                            
                                         </ul>
                                     </div>
                                 </div>
@@ -515,12 +286,11 @@ const Header = () => {
                                     <div className="mobile-logo">
                                         <a href="index.html">
                                             <img src="../assets/img/logo/logo.png" alt="Brand Logo" />
-                                            
                                         </a>
                                     </div>
                                     <div className="mobile-menu-toggler">
                                         <div className="mini-cart-wrap">
-                                            <a href="cart.html">
+                                            <a href="/cart">
                                                 <i className="ion-bag" />
                                                 <span className="notification">2</span>
                                             </a>
@@ -540,119 +310,7 @@ const Header = () => {
                                         all categories
                                         <span><i className="ion-android-arrow-dropdown" /></span>
                                     </div>
-                                    <nav className="category-menu">
-                                        <ul className="categories-list">
-                                            <li className="menu-item-has-children"><a href="shop.html">Fruits &amp;
-                                                Vegetables</a>
-                                                {/* Mega Category Menu Start */}
-                                                <ul className="category-mega-menu dropdown">
-                                                    <li className="menu-item-has-children">
-                                                        <a href="shop.html">Smartphone</a>
-                                                        <ul className="dropdown">
-                                                            <li><a href="shop.html">Samsome</a></li>
-                                                            <li><a href="shop.html">GL Stylus</a></li>
-                                                            <li><a href="shop.html">Uawei</a></li>
-                                                            <li><a href="shop.html">Cherry Berry</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li className="menu-item-has-children">
-                                                        <a href="shop.html">headphone</a>
-                                                        <ul className="dropdown">
-                                                            <li><a href="shop.html">Desktop Headphone</a></li>
-                                                            <li><a href="shop.html">Mobile Headphone</a></li>
-                                                            <li><a href="shop.html">Wireless Headphone</a></li>
-                                                            <li><a href="shop.html">LED Headphone</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li className="menu-item-has-children">
-                                                        <a href="shop.html">accessories</a>
-                                                        <ul className="dropdown">
-                                                            <li><a href="shop.html">Power Bank</a></li>
-                                                            <li><a href="shop.html">Data Cable</a></li>
-                                                            <li><a href="shop.html">Power Cable</a></li>
-                                                            <li><a href="shop.html">Battery</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li className="menu-item-has-children">
-                                                        <a href="shop.html">headphone</a>
-                                                        <ul className="dropdown">
-                                                            <li><a href="shop.html">Desktop Headphone</a></li>
-                                                            <li><a href="shop.html">Mobile Headphone</a></li>
-                                                            <li><a href="shop.html">Wireless Headphone</a></li>
-                                                            <li><a href="shop.html">LED Headphone</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                                {/* Mega Category Menu End */}
-                                            </li>
-                                            <li className="menu-item-has-children"><a href="shop.html">Fresh Meat</a>
-                                                {/* Mega Category Menu Start */}
-                                                <ul className="category-mega-menu dropdown three-column">
-                                                    <li className="menu-item-has-children">
-                                                        <a href="shop.html">Smartphone</a>
-                                                        <ul className="dropdown">
-                                                            <li><a href="shop.html">Samsome</a></li>
-                                                            <li><a href="shop.html">GL Stylus</a></li>
-                                                            <li><a href="shop.html">Uawei</a></li>
-                                                            <li><a href="shop.html">Cherry Berry</a></li>
-                                                            <li><a href="shop.html">uPhone</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li className="menu-item-has-children">
-                                                        <a href="shop.html">headphone</a>
-                                                        <ul className="dropdown">
-                                                            <li><a href="shop.html">Desktop Headphone</a></li>
-                                                            <li><a href="shop.html">Mobile Headphone</a></li>
-                                                            <li><a href="shop.html">Wireless Headphone</a></li>
-                                                            <li><a href="shop.html">LED Headphone</a></li>
-                                                            <li><a href="shop.html">Over-ear</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li className="menu-item-has-children">
-                                                        <a href="shop.html">accessories</a>
-                                                        <ul className="dropdown">
-                                                            <li><a href="shop.html">Power Bank</a></li>
-                                                            <li><a href="shop.html">Data Cable</a></li>
-                                                            <li><a href="shop.html">Power Cable</a></li>
-                                                            <li><a href="shop.html">Battery</a></li>
-                                                            <li><a href="shop.html">OTG Cable</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                                {/* Mega Category Menu End */}
-                                            </li>
-                                            <li className="menu-item-has-children"><a
-                                                href="shop.html">dairy &amp; eggs</a>
-                                                {/* Mega Category Menu Start */}
-                                                <ul className="category-mega-menu dropdown two-column">
-                                                    <li className="menu-item-has-children">
-                                                        <a href="shop.html">Smartphone</a>
-                                                        <ul className="dropdown">
-                                                            <li><a href="shop.html">Samsome</a></li>
-                                                            <li><a href="shop.html">GL Stylus</a></li>
-                                                            <li><a href="shop.html">Uawei</a></li>
-                                                            <li><a href="shop.html">Cherry Berry</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li className="menu-item-has-children">
-                                                        <a href="shop.html">headphone</a>
-                                                        <ul className="dropdown">
-                                                            <li><a href="shop.html">Desktop Headphone</a></li>
-                                                            <li><a href="shop.html">Mobile Headphone</a></li>
-                                                            <li><a href="shop.html">Wireless Headphone</a></li>
-                                                            <li><a href="shop.html">LED Headphone</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                                {/* Mega Category Menu End */}
-                                            </li>
-                                            <li><a href="shop.html">Frozen</a></li>
-                                            <li><a href="shop.html">Grocery</a></li>
-                                            <li><a href="shop.html">Kitchenware</a></li>
-                                            <li><a href="shop.html">Tools</a></li>
-                                            <li><a href="shop.html">Electronics</a></li>
-                                        </ul>
-                                    </nav>
+                                   {/* category menu to be completed */}
                                 </div>
                             </div>
                         </div>
