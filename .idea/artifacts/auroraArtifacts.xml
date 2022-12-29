@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="auroraArtifacts">
+    <output-path>$PROJECT_DIR$/out/artifacts/auroraArtifacts</output-path>
+    <root id="archive" name="auroraArtifacts.jar" />
+  </artifact>
+</component>
