@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name="product-category")
+@Table(name="product_category")
 @Data
 public class ProductCategory {
     @Id
@@ -14,7 +14,7 @@ public class ProductCategory {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "category-name")
+    @Column(name = "category_name")
     private String categoryName;
 
 
