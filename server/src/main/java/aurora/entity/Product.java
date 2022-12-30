@@ -14,7 +14,6 @@ public class Product{
     private Long id;
 
 
-
     @Column(name = "name")
     private String name;
 
@@ -27,13 +26,13 @@ public class Product{
     @Column(name = "active")
     private boolean active;
 
-    @Column(name = "units-inStock")
+    @Column(name = "units_inStock")
     private int unitsInStock;
 
-    @Column(name = "date-created")
+    @Column(name = "date_created")
     private Date dateCreated;
 
-    @Column(name = "date-modified")
+    @Column(name = "date_modified")
     private Date dateModified;
 
 
