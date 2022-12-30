@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.springframework:spring-orm:6.0.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../maven/apache-maven-3.8.6-bin/apache-maven-3.8.6/repository/org/springframework/spring-orm/6.0.3/spring-orm-6.0.3.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../maven/apache-maven-3.8.6-bin/apache-maven-3.8.6/repository/org/springframework/spring-orm/6.0.3/spring-orm-6.0.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../maven/apache-maven-3.8.6-bin/apache-maven-3.8.6/repository/org/springframework/spring-orm/6.0.3/spring-orm-6.0.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
