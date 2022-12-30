@@ -2,12 +2,12 @@
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <persistence-unit name="aurora-persistence" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-            <class>aurora.entity.User</class>
-            <class>aurora.entity.CartItem</class>
-            <class>aurora.entity.Product</class>
-            <class>aurora.entity.ProductCategory</class>
-            <class>aurora.entity.ProductToProductCategoryKey</class>
-        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+<!--            <class>auroras.entity.User</class>-->
+<!--            <class>aurora.entity.CartItem</class>-->
+<!--            <class>aurora.entity.Product</class>-->
+<!--            <class>aurora.entity.ProductCategory</class>-->
+<!--            <class>aurora.entity.ProductToProductCategoryKey</class>-->
+<!--        <exclude-unlisted-classes>true</exclude-unlisted-classes>-->
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/aurora"/>
