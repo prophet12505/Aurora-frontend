@@ -2,8 +2,8 @@ package aurora.entity;
 
 import lombok.Data;
 
-import javax.persistence.*;
-import java.util.Set;
+import jakarta.persistence.*;
+
 
 @Entity
 @Table(name="product_category")

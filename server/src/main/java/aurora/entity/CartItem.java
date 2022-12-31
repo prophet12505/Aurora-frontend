@@ -1,8 +1,10 @@
 package aurora.entity;
 
+
 import lombok.Data;
 
-import javax.persistence.*;
+//import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
