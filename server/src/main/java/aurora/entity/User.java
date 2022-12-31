@@ -2,7 +2,7 @@ package aurora.entity;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="user")
@@ -22,4 +22,13 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    public User(String name, String email,String password) {
+        this.name=name;
+        this.email=email;
+        this.password=password;
+    }
+
+    public User() {
+
+    }
 }
