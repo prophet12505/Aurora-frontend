@@ -30,7 +30,7 @@ public class Product{
     @Column(name = "brand")
     private String brand;
 
-    @Column(name = "price")
+    @Column(name = "price",columnDefinition = "int default 3")
     private Integer price;
 
     @Column(name = "units_in_stock", columnDefinition = "int default 99")
