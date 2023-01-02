@@ -3,8 +3,8 @@ package aurora.DTO;
 import lombok.Data;
 
 @Data
-public class LoginDTO {
-    public LoginDTO(Boolean loggedIn, String loginErrorMsg) {
+public class LoginResDTO {
+    public LoginResDTO(Boolean loggedIn, String loginErrorMsg) {
         this.loggedIn = loggedIn;
         this.loginErrorMsg = loginErrorMsg;
         this.name = "";
@@ -17,7 +17,7 @@ public class LoginDTO {
         private String email;
 
 
-        public LoginDTO(Boolean loggedIn, String loginErrorMsg, String name, String email) {
+        public LoginResDTO(Boolean loggedIn, String loginErrorMsg, String name, String email) {
             this.loggedIn = loggedIn;
             this.loginErrorMsg = loginErrorMsg;
             this.name = name;

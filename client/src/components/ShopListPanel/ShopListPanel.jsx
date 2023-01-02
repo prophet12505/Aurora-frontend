@@ -20,8 +20,7 @@ const ShopListPanel = () => {
                 <div className="row">
                     {/* sidebar area start */}
                     
-                       <SideBar></SideBar>
-                       
+                    <SideBar></SideBar>
                     
                     {/* sidebar area end */}
                     {/* shop main wrapper start */}

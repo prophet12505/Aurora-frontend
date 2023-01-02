@@ -41,15 +41,20 @@ public class UserService {
     }
 
     public void createUser(User user) {
-        EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.persist(user);
+        try{
+            EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+//            entityManager.persist(user);
+            userRepository.save(user);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
+
     public List<User> createUserTest() {
         EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-
-
         entityManager.getTransaction().begin();
         String sql = "INSERT INTO user (name, email, password) VALUES (?, ?, ?)";
         Query query = entityManager.createNativeQuery(sql);
@@ -57,13 +62,57 @@ public class UserService {
         query.setParameter(2, "123@qq.com");
         query.setParameter(3, "00111100");
         query.executeUpdate();
-
         entityManager.getTransaction().commit();
-
 
         return userRepository.findAll();
     }
+    public Boolean emailExist(String email){
+        EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        //int res=-1;
+        try{
+            entityManager.getTransaction().begin();
+            String sql = "SELECT COUNT(*) FROM user WHERE email = (?)";
+            Query query = entityManager.createNativeQuery(sql);
+            query.setParameter(1, email);
 
+            int count = ((Number)query.getSingleResult()).intValue();
+            entityManager.getTransaction().commit();
+            return count >= 1;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+//        finally {
+//            entityManager.close();
+//            entityManagerFactory.close();
+//        }
+    }
+    public User getUserByEmailAndPassword(String email,String password){
+        EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        try{
+            entityManager.getTransaction().begin();
+            String jpql = "SELECT u FROM User u WHERE u.email = :email AND u.password= :password";
+            Query query = entityManager.createQuery(jpql);
+            query.setParameter("email", email);
+            query.setParameter("password", password);
+            User res = (User)query.getSingleResult();
+            entityManager.getTransaction().commit();
+            return res;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+//        finally {
+//            entityManager.close();
+//            entityManagerFactory.close();
+//        }
+
+    }
     public List<User> getAllUsers(){
         return userRepository.findAll();
     }

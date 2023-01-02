@@ -3,6 +3,7 @@ package aurora.controller;
 import aurora.DTO.CreateProductDTO;
 import aurora.DTO.GeneralMessageDTO;
 import aurora.service.ProductService;
+import aurora.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +22,7 @@ public class DashBoardController {
             System.out.println("createProductDTO received");
             //System.out.println(createProductDTO);
             productService.createAProduct(createProductDTO);
-            return new GeneralMessageDTO("create product success","create-a-product");
+            return new GeneralMessageDTO("create product success", Constants.CREATE_A_PRODUCT);
         }
         catch (Exception e){
             return new GeneralMessageDTO(e.toString(),"create-a-product");
@@ -32,7 +33,7 @@ public class DashBoardController {
     public GeneralMessageDTO getCreateAProduct(){
         try{
             System.out.println("getCreateAProduct success");
-            return new GeneralMessageDTO("create product success","create-a-product");
+            return new GeneralMessageDTO("create product success",Constants.CREATE_A_PRODUCT);
         }
         catch (Exception e){
             return new GeneralMessageDTO(e.toString(),"create-a-product");

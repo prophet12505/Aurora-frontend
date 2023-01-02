@@ -40,18 +40,19 @@ login
 POST /login  
 token is encoded email and password, back end produce login logic, set up email_is_verified = true
 ### REQUEST BODY
-| Name     | Type   | Description          | Required(default yes) |
-|----------|--------|----------------------|-----------------------|
-| email    | String | email of the user    |                       |
-| password | String | password of the user |                       |
-### RESPONSE BODY(loginDTO)
-| Name            | Type    | Description                   | Required(default yes) |
-|-----------------|---------|-------------------------------|-----------------------|
-| logged_in       | Boolean | logged in successfully or not |                       |
-| login_error_msg | String  | if log in failed, the message |                       |
-| name            | String  | name of the user              |                       |
-| email           | String  | email of the user             |                       |
-| password        | String  | password of the user          |                       |
+| Name              | Type   | Description                   | Required(default yes) |
+|-------------------|--------|-------------------------------|-----------------------|
+| email  | String | email  |                       |
+| password          | String | password of the user          |                       |
+
+### RESPONSE BODY(loginResDTO)
+| Name          | Type    | Description                   | Required(default yes) |
+|---------------|---------|-------------------------------|-----------------------|
+| loggedIn      | Boolean | logged in successfully or not |                       |
+| loginErrorMsg | String  | if log in failed, the message |                       |
+| name          | String  | name of the user              |                       |
+| email         | String  | email of the user             |                       |
+| password      | String  | password of the user          |                       |
 
 =============product related===============================
 ## GET ALL PRODUCTS
