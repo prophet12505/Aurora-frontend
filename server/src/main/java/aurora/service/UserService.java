@@ -2,15 +2,16 @@ package aurora.service;
 
 
 
+import aurora.DTO.CreateProductDTO;
+import aurora.dao.UserRepository;
 import aurora.entity.User;
-//import javax.persistence.EntityManager;
-//import javax.persistence.PersistenceContext;
-//import javax.persistence.TypedQuery;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TypedQuery;
+
+import jakarta.persistence.*;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -20,35 +21,52 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service
+
 @Transactional
+@Service
 @Repository
 public class UserService {
     @Autowired
     private LocalContainerEntityManagerFactoryBean entityManagerFactoryBean;
-//    @PersistenceContext
-//    private EntityManager entityManager;
 
-    public List<User> getAllUsers() {
-        EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
+    @Autowired
+    private UserRepository userRepository;
 
-//        TypedQuery<User> query = entityManager.createQuery("SELECT u FROM aurora.entity.User u" , User.class);
-        TypedQuery<User> query = entityManager.createQuery("SELECT u FROM aurora.entity.User u" , User.class);
-        return query.getResultList();
+    //private EntityManagerFactory entityManagerFactory;
+    //private EntityManager entityManager ;
+
+    public UserService(){
+        //this.entityManagerFactory = entityManagerFactoryBean.getObject();
+        //this.entityManager = entityManagerFactory.createEntityManager();
     }
+
     public void createUser(User user) {
         EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.persist(user);
     }
-    public void createUserTest() {
+    public List<User> createUserTest() {
         EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        User user =new User("hongxin","prophet12505@gmail.com","mike1999611");
-        entityManager.persist(user);
+
+
+        entityManager.getTransaction().begin();
+        String sql = "INSERT INTO user (name, email, password) VALUES (?, ?, ?)";
+        Query query = entityManager.createNativeQuery(sql);
+        query.setParameter(1, "John");
+        query.setParameter(2, "123@qq.com");
+        query.setParameter(3, "00111100");
+        query.executeUpdate();
+
+        entityManager.getTransaction().commit();
+
+
+        return userRepository.findAll();
     }
 
+    public List<User> getAllUsers(){
+        return userRepository.findAll();
+    }
     public User getUserById(long id) {
         EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
         EntityManager entityManager = entityManagerFactory.createEntityManager();

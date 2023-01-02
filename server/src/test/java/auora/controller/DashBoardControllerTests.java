@@ -1,17 +1,19 @@
-package auora;
+package auora.controller;
 import static org.assertj.core.api.Assertions.assertThat;
 import aurora.DTO.CreateProductDTO;
 import aurora.DTO.GeneralMessageDTO;
 import aurora.controller.DashBoardController;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
 
-//@RunWith(SpringRunner.class)
+@RunWith(SpringRunner.class)
 @SpringBootTest(classes = {DashBoardController.class})
 public class DashBoardControllerTests {
 
@@ -29,7 +31,7 @@ public class DashBoardControllerTests {
         createProductDTO.setBrand("Beelink");
         createProductDTO.setPrice("0.1");
         createProductDTO.setCategory(Arrays.asList("item1", "item2", "item3"));
-        createProductDTO.setUnitsInStock(99);
+        createProductDTO.setUnitsInStock("99");
         createProductDTO.setImage("image default");
         // Send a POST request to the API
         ResponseEntity<GeneralMessageDTO> response = restTemplate.postForEntity("/create-a-product", createProductDTO, GeneralMessageDTO.class);

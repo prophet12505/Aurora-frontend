@@ -20,20 +20,28 @@ public class Product{
     @Column(name = "description")
     private  String description;
 
-    @Column(name = "image")
+//    base64 string of image
+    @Column(name = "image",columnDefinition="TEXT")
     private String image;
 
     @Column(name = "active")
     private boolean active;
 
-    @Column(name = "units_inStock")
-    private int unitsInStock;
+    @Column(name = "brand")
+    private String brand;
 
-    @Column(name = "date_created")
+    @Column(name = "price")
+    private Integer price;
+
+    @Column(name = "units_in_stock", columnDefinition = "int default 99")
+    private Integer unitsInStock;
+
+    @Column(name = "date_created",updatable = false, columnDefinition = "timestamp default current_timestamp")
     private Date dateCreated;
 
-    @Column(name = "date_modified")
+    @Column(name = "date_modified",columnDefinition = "timestamp default current_timestamp")
     private Date dateModified;
 
 
+    //review and comments needed to be added
 }
