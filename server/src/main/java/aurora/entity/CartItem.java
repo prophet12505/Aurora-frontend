@@ -25,4 +25,7 @@ public class CartItem {
     @Column(name = "user_id")
     private Long userId;
 
+    @Column(name = "quantity")
+    private int quantity;
+
 }

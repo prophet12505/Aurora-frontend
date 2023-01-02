@@ -2,6 +2,7 @@ package aurora.service;
 
 import aurora.DTO.CreateProductDTO;
 import aurora.dao.ProductRepository;
+import aurora.entity.Product;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Query;
@@ -11,10 +12,12 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional
 @Service
 @Repository
-public class DashBoardService {
+public class ProductService {
     @Autowired
     private LocalContainerEntityManagerFactoryBean entityManagerFactoryBean;
 
@@ -42,6 +45,10 @@ public class DashBoardService {
         catch (Exception e){
             System.out.println(e.getStackTrace());
         }
+    }
+
+    public List<Product> getAllProducts(){
+        return productRepository.findAll();
     }
 
 }
