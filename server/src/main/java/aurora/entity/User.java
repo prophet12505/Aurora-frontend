@@ -29,7 +29,7 @@ public class User {
 
     //new added
     @Column(name = "email_is_verified",columnDefinition = "Boolean default false")
-    private Boolean emailIsVerified;
+    private Boolean emailIsVerified=false;
 //    @Column(name="test_field",columnDefinition = "int default 100")
 //    private int testField;
 
