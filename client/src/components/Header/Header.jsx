@@ -289,7 +289,10 @@ const Header = () => {
                                 <div className="mobile-main-header">
                                     <div className="mobile-logo">
                                         <a href="index.html">
-                                            <img src="../../assets/img/logo/logo.png" alt="Brand Logo" />
+                                            <div className='col-sm-6'>
+                                            <img className="logo-img-mb" src="logo.png" alt="Brand Logo" />
+                                            </div>
+                                            {/* <div className='col-sm-6'><p >Aurora</p></div> */}
                                         </a>
                                     </div>
                                     <div className="mobile-menu-toggler">

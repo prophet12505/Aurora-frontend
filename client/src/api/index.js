@@ -1,3 +1,4 @@
+import axios from "axios"
 const url="http://localhost:8080"
 export const fetchAllProducts=()=>{
     try {
@@ -8,3 +9,4 @@ export const fetchAllProducts=()=>{
         console.log(error);
     }
 }
+export default fetchAllProducts;
