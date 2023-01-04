@@ -1,7 +1,33 @@
 import React from 'react';
-// import '../../js/vendor.js'
-// import '../../js/active.js'
+import { useSelector } from 'react-redux';
+import products from '../../reducers/products';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { getProductDetailByClickAction } from '../../actions/productActions';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
 const ProductDetailPanel = () => {
+    const dispatch=useDispatch();
+    const selectedProductStore=useSelector(state=>state.selectedProduct);
+    const [selectedProduct,setSelectedProduct]=useState({
+        name:'Loading...',
+        description:'',
+        image:'',
+        price:'0',
+        unitInStock:99,
+    });
+    const {id}=useParams();
+    useEffect(()=>{
+        dispatch(getProductDetailByClickAction(id));
+    },[]);
+    useEffect(()=>{
+        if(selectedProductStore){
+            setSelectedProduct(selectedProductStore);
+        }
+        
+    },[selectedProductStore]);
+    //useSelector
     return (<main>
         {/* breadcrumb area start */}
         <div className="breadcrumb-area">
@@ -34,9 +60,10 @@ const ProductDetailPanel = () => {
                                 <div className="col-lg-5">
                                     <div className="product-large-slider img-zoom mb-20">
                                         <div className="pro-large-img">
-                                            <img src="assets/img/product/product-details-img1.jpg" alt="" />
+                                            {/* <img src="assets/img/product/product-details-img1.jpg" alt="" /> */}
+                                            <img src={selectedProduct.image} alt="product image" />
                                         </div>
-                                        <div className="pro-large-img">
+                                        {/* <div className="pro-large-img">
                                             <img src="assets/img/product/product-details-img2.jpg" alt="" />
                                         </div>
                                         <div className="pro-large-img">
@@ -44,13 +71,14 @@ const ProductDetailPanel = () => {
                                         </div>
                                         <div className="pro-large-img">
                                             <img src="assets/img/product/product-details-img4.jpg" alt="" />
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <div className="pro-nav slick-row-10 slick-arrow-style">
                                         <div className="pro-nav-thumb">
-                                            <img src="assets/img/product/product-details-img1.jpg" alt="" />
+                                            {/* <img src="assets/img/product/product-details-img1.jpg" alt="" /> */}
+                                            <img src={selectedProduct.image} alt="product image" />
                                         </div>
-                                        <div className="pro-nav-thumb">
+                                        {/* <div className="pro-nav-thumb">
                                             <img src="assets/img/product/product-details-img2.jpg" alt="" />
                                         </div>
                                         <div className="pro-nav-thumb">
@@ -61,12 +89,12 @@ const ProductDetailPanel = () => {
                                         </div>
                                         <div className="pro-nav-thumb">
                                             <img src="assets/img/product/product-details-img5.jpg" alt="" />
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                                 <div className="col-lg-7">
                                     <div className="product-details-des">
-                                        <h5 className="product-name"><a href="product-details.html">Private Selection Wild Caught Jumbo Lump</a></h5>
+                                        <h5 className="product-name"><a href="product-details.html">{selectedProduct.name}</a></h5>
                                         <div className="ratings">
                                             <span><i className="ion-android-star" /></span>
                                             <span><i className="ion-android-star" /></span>
@@ -78,16 +106,13 @@ const ProductDetailPanel = () => {
                                             </div>
                                         </div>
                                         <div className="price-box">
-                                            <span className="price-old"><del>$90.00</del></span>
-                                            <span className="price-regular">$70.00</span>
+                                            <span className="price-old"><del>${selectedProduct.price*1.1}</del></span>
+                                            <span className="price-regular">${selectedProduct.price}</span>
                                         </div>
-                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                            eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                                            voluptua. Phasellus id nisi quis justo tempus mollis sed et dui. In hac
-                                            habitasse platea dictumst.</p>
+                                        <p>{selectedProduct.description}</p>
                                         <div className="availability mt-10 mb-20">
                                             <i className="ion-checkmark-circled" />
-                                            <span>200 in stock</span>
+                                            <span>{selectedProduct.unitsInStock}</span>
                                         </div>
                                         <div className="quantity-cart-box d-flex align-items-center">
                                             <div className="quantity">

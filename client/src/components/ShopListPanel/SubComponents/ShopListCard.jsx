@@ -1,14 +1,33 @@
 import React from 'react'
+import {useSelector} from "react-redux";
+// import { getProductDetailByClickAction } from '../../actions/productActions';
+import { getProductDetailByClickAction } from '../../../actions/productActions';
+import {useDispatch} from "react-redux"
+import { useEffect } from 'react';
 
+import { useNavigate } from 'react-router-dom';
 const ShopListCard = ({product}) => {
+    const dispatch=useDispatch();
+    const navigate=useNavigate();
+    // useEffect(()=>{
+    //     dispatch(getProductDetailByClickAction(product));
+    // },[])
+    function handleOpenDetail(){
+        console.log("productID:")
+        console.log(product.id);
+        // navigate('/product-detail');
+        //dispatch(getProductDetailByClickAction(product.id));
+    }
+    
+
   return (
     <div className="col-md-4 col-sm-6">
                                     {/* product grid start */}
                                     <div className="product-item mb-30">
                                         <div className="product-thumb">
-                                            <a href="product-details.html">
+                                            <a href={'/products/details?id='+product.id} >
                                                 {/* <img src="assets/img/product/product-1.jpg" alt="" /> */}
-                                                <img src={product.image} alt="" />
+                                                <img src={product.image}  alt="product image" />
                                                 
                                             </a>
                                             <div className="add-to-links">

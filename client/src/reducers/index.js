@@ -1,7 +1,8 @@
 import {combineReducers} from "redux";
 import products from "./products";
-import users from "./users";
+import currentUser from "./currentUser";
 import message from "./message";
+import selectedProduct from "./selectedProduct";
 export default combineReducers({
-   products,users,message
+   products,message,selectedProduct,currentUser
 });

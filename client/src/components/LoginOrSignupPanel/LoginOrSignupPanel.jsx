@@ -4,16 +4,29 @@ import { useState } from 'react';
 import { loginAction,signupAction } from '../../actions/userActions';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { VERIFY_EMAIL } from '../../constants/actionTypes';
+import "./LoginOrSignupPanel.css"
 const LoginOrSignupPanel = () => {
 
 const dispatch = useDispatch();
+const navigate =useNavigate();
 const messageStore=useSelector(state=>state.message);
 
  function handleLogin(){
     dispatch(loginAction(loginData));
  }
  function handleSignup(){
+  if(document.getElementById("password-input").value!=document.getElementById("password-input-repeat").value)
+  {
+    document.getElementById("signup-message").style.display='block';
+    document.getElementById("signup-message").innerHTML="The two passwords you typed do not match";
+  }
+  else
+  {
     dispatch(signupAction(signupData));
+  }
+    
  }
  const [loginData,setLoginData]=useState({
     email:'',
@@ -24,12 +37,48 @@ const messageStore=useSelector(state=>state.message);
     email:'',
     password:''
  })
+ //hide message since the beginning
+ useEffect(()=>{ 
+  document.getElementById("signup-message").style.display='none';
+ document.getElementById("login-message").style.display='none';
+},[]);
+
+function sendEmail(emailAdress){
+console.log("email has been sent to:"+emailAdress);
+}
+// set sign up message 
  useEffect(()=>{
+  if(messageStore){
     if(messageStore.operation==="SIGNUP"){
-        console.log(messageStore);
-    }
+      console.log(messageStore);
+      if(messageStore.message){
+        document.getElementById("signup-message").style.display='block';
+        document.getElementById("signup-message").innerHTML=messageStore.message;
+        if(messageStore.operationSuccess){
+          sendEmail(signupData.email);
+        }
+      }
+  }
+} 
  },[messageStore])
 
+const currentUserStore= useSelector(state=>state.currentUser);
+useEffect(()=>{
+  console.log("currentUserStore");
+  console.log(currentUserStore);
+  if(currentUserStore){
+    if(currentUserStore.loggedIn){
+    navigate('/');
+  }
+  else{
+    if(currentUserStore.loginErrorMsg){
+      document.getElementById("login-message").style.display='block';
+    document.getElementById("login-message").innerHTML=currentUserStore.loginErrorMsg;
+    }
+    
+  }
+} 
+ },[currentUserStore])
 
   return (
     <div className="login-register-wrapper pt-40 pb-40">
@@ -39,8 +88,9 @@ const messageStore=useSelector(state=>state.message);
           {/* Login Content Start */}
           <div className="col-lg-6">
             <div className="login-reg-form-wrap">
-              <h2>Sign In</h2>
+              <h2>Log In</h2>
               {/* <form action="/login" method="post"> */}
+              <p id='login-message'>this is the message section</p>
                 <div className="single-input-item">
                   <input type="email" name='email' placeholder="Your email" value={loginData.email} onChange={(e)=>setLoginData({...loginData,email:e.target.value})} required />
                 </div>
@@ -68,9 +118,10 @@ const messageStore=useSelector(state=>state.message);
           {/* Register Content Start */}
           <div className="col-lg-6">
             <div className="login-reg-form-wrap sign-up-form">
-              <h2>Singup Form</h2>
+              <h2>Sign up </h2>
               {/* <form action="#" method="post"> */}
               {/* <form > */}
+              <p id='signup-message'>this is the message section</p>
                 <div className="single-input-item">
                   <input type="text" placeholder="Enter your Username" value={signupData.name} onChange={(e)=>{setSignupData({...signupData,name:e.target.value})}}  required/>
                 </div>
@@ -80,12 +131,12 @@ const messageStore=useSelector(state=>state.message);
                 <div className="row">
                   <div className="col-lg-6">
                     <div className="single-input-item">
-                      <input type="password" placeholder="Enter your Password" value={signupData.password} onChange={(e)=>{setSignupData({...signupData,password:e.target.value})}} required />
+                      <input id="password-input" type="password" placeholder="Enter your Password" value={signupData.password} onChange={(e)=>{setSignupData({...signupData,password:e.target.value})}} required />
                     </div>
                   </div>
                   <div className="col-lg-6">
                     <div className="single-input-item">
-                      <input type="password" placeholder="Repeat your Password" required />
+                      <input id="password-input-repeat" type="password" placeholder="Repeat your Password" required />
                     </div>
                   </div>
                 </div>

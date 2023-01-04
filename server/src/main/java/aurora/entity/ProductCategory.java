@@ -17,7 +17,4 @@ public class ProductCategory {
     @Column(name = "category_name")
     private String categoryName;
 
-
-
-
 }
