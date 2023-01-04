@@ -1,8 +1,19 @@
 import React from 'react';
 
 import "./Header.css"
-
+import { useSelector } from 'react-redux';
+import { useEffect,useState } from 'react';
 const Header = () => {
+    const currentUserStore=useSelector(state=>state.currentUser);
+    const [currentUser,setCurrentUser]=useState({name:"guest "});
+    useEffect(()=>{
+        if(currentUserStore.name){
+            setCurrentUser({name:currentUserStore.name,loggedIn:currentUserStore.loggedIn,email:currentUserStore.email});
+        }
+    },[currentUserStore])
+    function handleCheckOut(){
+        localStorage.clear();
+    }
     return (
         // header component
         //
@@ -23,13 +34,16 @@ const Header = () => {
                                     <div className="header-top-settings">
                                         <ul className="nav align-items-center">
                                             <li className="account-settings">
-                                                My account
+                                                {"Hello, "+currentUser.name+" "}
+                                                {/* My Account */}
                                                 <i className="fa fa-angle-down" />
                                                 <ul className="dropdown-list account-list">
-                                                    <li><a href="my-account.html">my account</a></li>
-                                                    <li><a href="login-register.html">login register</a></li>
-                                                    <li><a href="wishlist.html">wishlist</a></li>
-                                                    <li><a href="checkout.html">checkout</a></li>
+                                                    
+                                                    {!currentUser.loggedIn && (<li><a href="/login-or-signup">Log in</a></li>)}
+                                                    <li><a href="/login-or-signup">Sign up</a></li>
+                                                    {currentUser.loggedIn && (<li><a href="/cart">wishlist & cart</a></li>)}
+                                                    {currentUser.loggedIn && (<li><a href="/checkout">checkout</a></li>)}
+                                                    {currentUser.loggedIn &&(<li><a onClick={handleCheckOut} href="/">log out</a></li>)}
                                                 </ul>
                                             </li>
                                           
@@ -275,9 +289,9 @@ const Header = () => {
                                                 <i className="fa fa-angle-down" />
                                                 <ul className="dropdown-list account-list">
                                                     <li><a href="#">my account</a></li>
-                                                    <li><a href="#">login register</a></li>
-                                                    <li><a href="#">wishlist</a></li>
-                                                    <li><a href="#">checkout</a></li>
+                                                    <li><a href="/login-or-signup">login register</a></li>
+                                                    <li><a href="/cart">My cart</a></li>
+                                                    <li><a href="/checkout">checkout</a></li>
                                                 </ul>
                                             </li>
                                             

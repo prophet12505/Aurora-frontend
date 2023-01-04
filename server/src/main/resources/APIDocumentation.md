@@ -24,7 +24,7 @@ back end signup up user(if not duplicated email), write email to user account
 ## VERIFY EMAIL
 VERIFY EMAIL
 ### HTTP REQUEST
-GET /verify-email/{token}  
+GET /verify-email?token={token}  
 token is encoded email and password, back end produce login logic, set up email_is_verified = true
 
 ### RESPONSE BODY(User) -- immediately log in after verification 
@@ -54,11 +54,29 @@ token is encoded email and password, back end produce login logic, set up email_
 | email         | String  | email of the user             |                       |
 | password      | String  | password of the user          |                       |
 
+## KEEP_LOGIN_STATE_BY_SERVER_CALL
+KEEP_LOGIN_STATE_BY_SERVER_CALL
+### HTTP REQUEST
+GET /users/keep-login-state?token={token}  
+token is encoded email , back end produce login logic
+
+### RESPONSE BODY(loginResDTO)
+| Name          | Type    | Description                   | Required(default yes) |
+|---------------|---------|-------------------------------|-----------------------|
+| loggedIn      | Boolean | logged in successfully or not |                       |
+| loginErrorMsg | String  | if log in failed, the message |                       |
+| name          | String  | name of the user              |                       |
+| email         | String  | email of the user             |                       |
+
+
+
+
+
 =============product related===============================
 ## GET ALL PRODUCTS
 products
 ### HTTP REQUEST
-GET /products  
+GET /products/all  
 back end use repository quickly get all
 ### RESPONSE BODY
 List<Products>
@@ -66,7 +84,7 @@ List<Products>
 ## GET PRODUCTS BY ID
 GET PRODUCTS BY ID
 ### HTTP REQUEST
-GET /products/{id}  
+GET /products/details?id={id}  
 back end use repository quickly get by id
 ### RESPONSE BODY
 Products entity

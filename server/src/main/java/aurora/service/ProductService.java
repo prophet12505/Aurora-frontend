@@ -6,6 +6,8 @@ import aurora.entity.Product;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Query;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -18,6 +20,7 @@ import java.util.List;
 @Service
 @Repository
 public class ProductService {
+    private static final Logger logger= LoggerFactory.getLogger(ProductService.class);
     @Autowired
     private LocalContainerEntityManagerFactoryBean entityManagerFactoryBean;
 
@@ -43,12 +46,31 @@ public class ProductService {
             entityManager.getTransaction().commit();
         }
         catch (Exception e){
-            System.out.println(e.getStackTrace());
+            logger.info(e.toString());
         }
     }
 
     public List<Product> getAllProducts(){
         return productRepository.findAll();
     }
+    public Product getProductById(Long id){
+        return productRepository.findById(id).get();
+    }
+    public Boolean createProductCategoryKey() {
+        EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        try{
+            Query query = entityManager.createQuery(
+                    "INSERT INTO ProductCategory c (c.categoryName) SELECT :categoryName WHERE NOT EXISTS (SELECT 1 FROM ProductCategory WHERE categoryName = :categoryName)");
+            query.setParameter("categoryName", categoryName);
+            query.executeUpdate();
+            return true;
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            return false;
+        }
 
+        entityManager.getTransaction().commit();
+    }
 }

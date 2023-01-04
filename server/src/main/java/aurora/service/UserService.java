@@ -13,12 +13,15 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Base64;
 import java.util.List;
 
 
@@ -32,6 +35,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     //private EntityManagerFactory entityManagerFactory;
     //private EntityManager entityManager ;
 
@@ -100,6 +104,7 @@ public class UserService {
             query.setParameter("email", email);
             query.setParameter("password", password);
             User res = (User)query.getSingleResult();
+            logger.info("user.name:"+res.getName());
             entityManager.getTransaction().commit();
             return res;
         }
@@ -107,10 +112,48 @@ public class UserService {
             e.printStackTrace();
             return null;
         }
-//        finally {
-//            entityManager.close();
-//            entityManagerFactory.close();
-//        }
+    }
+    public Boolean verifyUserEmail(String token) {
+        try{
+            EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            entityManager.getTransaction().begin();
+            logger.info("token:"+token);
+
+
+            byte[] decodedBytes = Base64.getDecoder().decode(token);
+            String email = new String(decodedBytes);
+            logger.info("email:"+email);
+    //        String jpql="SELECT u From User u WHERE u.email=:email";
+            String jpql="UPDATE User u SET u.emailIsVerified=true WHERE u.email=:email";
+            Query query=entityManager.createQuery(jpql);
+            query.setParameter("email",email);
+            query.executeUpdate();
+            entityManager.getTransaction().commit();
+            logger.info("SUCCESSFULLY VERIFIED EMAIL!");
+            return true;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+
+
+    }
+    public User getUserByEmailToken(String token){
+        EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+
+        byte[] decodedBytes = Base64.getDecoder().decode(token);
+        String email = new String(decodedBytes);
+        String jpql="SELECT  u FROM User u WHERE u.email=:email";
+        Query query=entityManager.createQuery(jpql);
+        query.setParameter("email",email);
+        User res=(User)query.getSingleResult();
+        entityManager.getTransaction().commit();
+        logger.info("SUCCESSFULLY getUserByEmailToken!");
+        return res;
 
     }
     public List<User> getAllUsers(){
