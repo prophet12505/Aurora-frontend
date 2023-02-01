@@ -31,13 +31,12 @@ function App() {
   return (<div className="App">
               <BrowserRouter>
         <Header></Header>
-        <ul>
-            {/* <li><a href="/">shoplist</a></li> */}
+        {/* <ul>
             <li><a href="/cart">CartPanel</a></li>
             <li><a href="/checkout">CheckOutPanel</a></li>
             <li><a href="/login-or-signup">LoginOrSignupPanel</a></li>
             <li><a href="/product-detail">ProductDetailPanel</a></li>
-        </ul>
+        </ul> */}
             <Routes>
                     <Route path="/" element={<ShopListPanel></ShopListPanel>} />
                     <Route path="/verify-email" element={<EmailVerificationSuccessPanel/>}></Route>

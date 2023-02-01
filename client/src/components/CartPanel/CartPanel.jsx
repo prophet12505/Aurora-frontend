@@ -1,10 +1,28 @@
 import React from 'react';
 
-
+import { useSelector } from 'react-redux';
+import { useEffect,useState } from 'react';
+import { getAllCartItemsAction } from '../../actions/cartItemActions';
+import { useDispatch } from 'react-redux';
 
 const CartPanel = () => {
+    const currentUserStore=useSelector(state=>state.currentUser);
+    
+    const cartItemsStore=useSelector(state=>state.cartItems);
+    const [cartItems,setCartItems]=useState([]);
+    const dispatch=useDispatch();
+    useEffect(()=>{
+        console.log(currentUserStore);
+        if(currentUserStore.loggedIn && cartItems.length===0){
+            console.log("dispatch get All cart items");
+            dispatch(getAllCartItemsAction(currentUserStore.user.id));
+        }
+    },[currentUserStore]);
+    useEffect(()=>{
+        setCartItems(cartItemsStore);
+    },[cartItemsStore]);
+    var sum=0;
     return (
-
     <main>
         {/* breadcrumb area start */}
         <div className="breadcrumb-area">
@@ -53,40 +71,24 @@ const CartPanel = () => {
                                     <td className="pro-subtotal"><span>$295.00</span></td>
                                     <td className="pro-remove"><a href="#"><i className="fa fa-trash-o" /></a></td>
                                 </tr>
-                                <tr>
-                                    <td className="pro-thumbnail"><a href="#"><img className="img-fluid" src="assets/img/product/product-2.jpg" alt="Product" /></a></td>
-                                    <td className="pro-title"><a href="#">Joust Duffle Bags</a></td>
-                                    <td className="pro-price"><span>$275.00</span></td>
-                                    <td className="pro-quantity">
-                                        <div className="pro-qty"><input type="text" defaultValue={2} /></div>
-                                    </td>
-                                    <td className="pro-subtotal"><span>$550.00</span></td>
-                                    <td className="pro-remove"><a href="#"><i className="fa fa-trash-o" /></a></td>
-                                </tr>
-                                <tr>
-                                    <td className="pro-thumbnail"><a href="#"><img className="img-fluid" src="assets/img/product/product-3.jpg" alt="Product" /></a></td>
-                                    <td className="pro-title"><a href="#">Compete Track Totes</a></td>
-                                    <td className="pro-price"><span>$295.00</span></td>
-                                    <td className="pro-quantity">
-                                        <div className="pro-qty">
-                                            <input type="text" defaultValue={1} />
-                                        </div>
-                                    </td>
-                                    <td className="pro-subtotal"><span>$295.00</span></td>
-                                    <td className="pro-remove"><a href="#"><i className="fa fa-trash-o" /></a></td>
-                                </tr>
-                                <tr>
-                                    <td className="pro-thumbnail"><a href="#"><img className="img-fluid" src="assets/img/product/product-4.jpg" alt="Product" /></a></td>
-                                    <td className="pro-title"><a href="#">Bess Yoga Shorts</a></td>
-                                    <td className="pro-price"><span>$110.00</span></td>
-                                    <td className="pro-quantity">
-                                        <div className="pro-qty">
-                                            <input type="text" defaultValue={3} />
-                                        </div>
-                                    </td>
-                                    <td className="pro-subtotal"><span>$110.00</span></td>
-                                    <td className="pro-remove"><a href="#"><i className="fa fa-trash-o" /></a></td>
-                                </tr>
+                                {
+                                                
+                                                cartItems.map((cartItem,index)=>{
+                                                    sum+=cartItem.product.price*cartItem.cartItem.quantity;
+                                                    return(
+                                                        <tr>
+                                                        <td className="pro-thumbnail"><a href="#"><img className="img-fluid" src={cartItem.product.image} alt="Product" /></a></td>
+                                                        <td className="pro-title"><a href="#">{cartItem.product.name}</a></td>
+                                                        <td className="pro-price"><span>${cartItem.product.price}</span></td>
+                                                        <td className="pro-quantity">
+                                                            <div className="pro-qty"><input type="text" defaultValue={cartItem.cartItem.quantity} /></div>
+                                                        </td>
+                                                        <td className="pro-subtotal"><span>${cartItem.product.price*cartItem.cartItem.quantity}</span></td>
+                                                        <td className="pro-remove"><a href="#"><i className="fa fa-trash-o" /></a></td>
+                                                    </tr>
+                                                    
+                                                    );
+                                                })}
                                 </tbody>
                             </table>
                         </div>
@@ -114,7 +116,7 @@ const CartPanel = () => {
                                     <table className="table">
                                         <tbody><tr>
                                             <td>Sub Total</td>
-                                            <td>$230</td>
+                                            <td>${sum}</td>
                                         </tr>
                                         <tr>
                                             <td>Shipping</td>
@@ -122,7 +124,7 @@ const CartPanel = () => {
                                         </tr>
                                         <tr className="total">
                                             <td>Total</td>
-                                            <td className="total-amount">$300</td>
+                                            <td className="total-amount">${sum+70}</td>
                                         </tr>
                                         </tbody></table>
                                 </div>

@@ -1,8 +1,28 @@
 import React from 'react';
 
-
+import { useSelector } from 'react-redux';
+import { useEffect,useState } from 'react';
+import { getAllCartItemsAction } from '../../actions/cartItemActions';
+import { useDispatch } from 'react-redux';
 
 const CheckOutPanel = () => {
+    const currentUserStore=useSelector(state=>state.currentUser);
+    
+    const cartItemsStore=useSelector(state=>state.cartItems);
+    const [cartItems,setCartItems]=useState([]);
+    const dispatch=useDispatch();
+    useEffect(()=>{
+        console.log(currentUserStore);
+        if(currentUserStore.loggedIn && cartItems.length===0){
+            console.log("dispatch get All cart items");
+            dispatch(getAllCartItemsAction(currentUserStore.user.id));
+        }
+
+    },[currentUserStore]);
+    useEffect(()=>{
+        setCartItems(cartItemsStore);
+    },[cartItemsStore]);
+    var sum=0;
     return (
         <main>
             {/* breadcrumb area start */}
@@ -268,26 +288,27 @@ const CheckOutPanel = () => {
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            {
+                                                
+                                            cartItems.map((cartItem,index)=>{
+                                                sum+=cartItem.product.price*cartItem.cartItem.quantity;
+                                                return(<tr>
+                                                <td><a href="single-product.html">{cartItem.product.name}<strong> × {cartItem.cartItem.quantity}</strong></a>
+                                                </td>
+                                                <td>${cartItem.product.price}</td>
+                                            </tr>);
+                                            })}
                                             <tr>
                                                 <td><a href="single-product.html">Suscipit Vestibulum <strong> × 1</strong></a>
                                                 </td>
                                                 <td>$165.00</td>
                                             </tr>
-                                            <tr>
-                                                <td><a href="single-product.html">Ami Vestibulum suscipit <strong> × 4</strong></a>
-                                                </td>
-                                                <td>$165.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="single-product.html">Vestibulum suscipit <strong> × 2</strong></a>
-                                                </td>
-                                                <td>$165.00</td>
-                                            </tr>
+                                            
                                             </tbody>
                                             <tfoot>
                                             <tr>
                                                 <td>Sub Total</td>
-                                                <td><strong>$400</strong></td>
+                                                <td><strong>${sum}</strong></td>
                                             </tr>
                                             <tr>
                                                 <td>Shipping</td>
