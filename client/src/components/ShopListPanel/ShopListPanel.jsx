@@ -6,6 +6,7 @@ import { getAllProductsAction } from '../../actions/productActions';
 import {useDispatch} from "react-redux"
 import { useEffect } from 'react';
 
+
 const ShopListPanel = () => {
     
     const dispatch=useDispatch();
@@ -14,6 +15,7 @@ const ShopListPanel = () => {
     },[])
     const products=useSelector(state=>state.products);
     //useSelector
+    
     return (
         <div className="shop-main-wrapper pt-40 pb-40">
             <div className="container custom-container">
@@ -28,7 +30,7 @@ const ShopListPanel = () => {
                         <div className="shop-product-wrapper">
                             {/* shop page header banner start */}
                             <div className="shop-header-banner pb-40">
-                                <img src="assets/img/banner/fruits-vegetables.jpg" alt="fruits and vegetables" />
+                                <img src="assets/img/banner/hardware-Banner.jpg" alt="hardware banner" />
                             </div>
                             {/* shop page header end */}
                             {/* shop product top wrap start */}

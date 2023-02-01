@@ -168,42 +168,15 @@ const Header = () => {
                                                         );
                                                     })
                                                     }
-                                                    {/* <li>
-                                                        <div className="cart-img">
-                                                            <a href="product-details.html"><img
-                                                                src="assets/img/cart/cart-1.jpg" alt="" /></a>
-                                                        </div>
-                                                        <div className="cart-info">
-                                                            <h4><a href="product-details.html">simple product</a></h4>
-                                                            <span className="cart-qty">Qty: 1</span>
-                                                            <span>$60.00</span>
-                                                        </div>
-                                                        <div className="del-icon">
-                                                            <i className="fa fa-times" />
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div className="cart-img">
-                                                            <a href="product-details.html"><img
-                                                                src="assets/img/cart/cart-2.jpg" alt="" /></a>
-                                                        </div>
-                                                        <div className="cart-info">
-                                                            <h4><a href="product-details.html">virtual product</a></h4>
-                                                            <span className="cart-qty">Qty: 2</span>
-                                                            <span>$100.00</span>
-                                                        </div>
-                                                        <div className="del-icon">
-                                                            <i className="fa fa-times" />
-                                                        </div>
-                                                    </li> */}
+                                                    
                                                     <li className="mini-cart-price">
                                                         <span className="subtotal">subtotal : </span>
                                                         <span className="subtotal-price ml-auto">$110.00</span>
                                                     </li>
                                                     <li>
                                                         <div className="mini-cart-button">
-                                                            <a className="check-btn" href="cart.html">View Cart</a>
-                                                            <a className="check-btn" href="checkout.html">checkout</a>
+                                                            <a className="check-btn" href="/cart">View Cart</a>
+                                                            <a className="check-btn" href="/checkout">checkout</a>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -226,7 +199,7 @@ const Header = () => {
                                         {/* main menu navbar start */}
                                         <nav className="desktop-menu">
                                             <ul>
-                                                <li className="active"><a href="index.html">Home <i
+                                                <li className="active"><a href="/">Home <i
                                                     className="fa fa-angle-down" /></a>
                                                     <ul className="dropdown">
                                                         <li><a href="index.html">Home version 01</a></li>
