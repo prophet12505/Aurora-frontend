@@ -27,8 +27,8 @@ export const verifyEmailAction=(token)=>async(dispatch)=>{
     });
 }
 export const keepLoginStateAction=(token)=>async(dispatch)=>{
-    console.log("ACTION KEEP_LOGIN_STATE");
-    console.log("token:"+token);
+   // console.log("ACTION KEEP_LOGIN_STATE");
+   // console.log("token:"+token);
     const {data}=await api.keepLoginState(token);
     dispatch({
         type:KEEP_LOGIN_STATE,

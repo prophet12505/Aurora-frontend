@@ -1,8 +1,12 @@
 package aurora.service;
 
 import aurora.DTO.CreateProductDTO;
+import aurora.dao.ProductCategoryRepository;
 import aurora.dao.ProductRepository;
+import aurora.dao.ProductToProductCategoryKeyRepository;
 import aurora.entity.Product;
+import aurora.entity.ProductCategory;
+import aurora.entity.ProductToProductCategoryKey;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Query;
@@ -14,6 +18,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -27,26 +32,34 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public void createAProduct(CreateProductDTO createProductDTO) {
+    @Autowired
+    private ProductCategoryRepository productCategoryRepository;
+
+    @Autowired
+    private ProductToProductCategoryKeyRepository productToProductCategoryKeyRepository;
+
+    //return product id
+    public Long createAProduct(CreateProductDTO createProductDTO) {
         try{
             EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
             EntityManager entityManager = entityManagerFactory.createEntityManager();
-            entityManager.getTransaction().begin();
-            String sql = "INSERT INTO product (name, description, image,active,brand,price,units_in_stock) VALUES (?, ?, ?,?,?,?,?)";
-            Query query = entityManager.createNativeQuery(sql);
-            query.setParameter(1, createProductDTO.getName());
-            query.setParameter(2, createProductDTO.getDescription());
-            query.setParameter(3, createProductDTO.getImage());
-            query.setParameter(4, createProductDTO.getActive());
-            query.setParameter(5, createProductDTO.getBrand());
-            query.setParameter(6, createProductDTO.getPrice());
-            query.setParameter(7,createProductDTO.getUnitsInStock());
-            query.executeUpdate();
-
-            entityManager.getTransaction().commit();
+            //entityManager.getTransaction().begin();
+            Product product =new Product();
+            product.setName(createProductDTO.getName());
+            product.setBrand(createProductDTO.getBrand());
+            product.setDescription(createProductDTO.getDescription());
+            product.setPrice(Double.parseDouble(createProductDTO.getPrice()));
+            product.setActive(createProductDTO.getActive());
+            product.setImage(createProductDTO.getImage());
+            product.setUnitsInStock(Integer.valueOf(createProductDTO.getUnitsInStock()));
+            Product productSaveRes=productRepository.save(product);
+            logger.info("productSaveRes:");
+            logger.info(productSaveRes.getName()+productSaveRes.getDescription());
+            return productSaveRes.getId();
         }
         catch (Exception e){
-            logger.info(e.toString());
+            logger.error(e.toString());
+            return -1L;
         }
     }
 
@@ -56,21 +69,80 @@ public class ProductService {
     public Product getProductById(Long id){
         return productRepository.findById(id).get();
     }
-    public Boolean createProductCategoryKey() {
-        EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
+
+    public List<Long> createProductCategory(List<String> categoryNames) {
+        List<Long> res=new ArrayList<>();
         try{
-            Query query = entityManager.createQuery(
-                    "INSERT INTO ProductCategory c (c.categoryName) SELECT :categoryName WHERE NOT EXISTS (SELECT 1 FROM ProductCategory WHERE categoryName = :categoryName)");
-            query.setParameter("categoryName", categoryName);
-            query.executeUpdate();
-            return true;
+            EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            entityManager.getTransaction().begin();
+//            if category not exists insert it
+
+            for (String categoryName : categoryNames) {
+                logger.info("categoryName:"+categoryName);
+                Query queryNameExist = entityManager.createQuery(
+                        "SELECT pc FROM ProductCategory pc WHERE categoryName = :categoryName");
+                queryNameExist.setParameter("categoryName", categoryName);
+                List<ProductCategory> queryNameExistRes=queryNameExist.getResultList();
+                if(queryNameExistRes.size()>=1){
+                    logger.info("FOUND: product category");
+                    res.add(queryNameExistRes.get(0).getId());
+                }
+                //create that product
+                else{
+                    logger.info("CREATE: product category");
+                    ProductCategory productCategory=new ProductCategory();
+                    productCategory.setCategoryName(categoryName);
+                    ProductCategory productCategoryRes=productCategoryRepository.save(productCategory);
+                    res.add(productCategoryRes.getId());
+                }
+            }
+            entityManager.getTransaction().commit();
+            logger.info("res:"+res);
+            return res;
         }catch (Exception e){
+            logger.error(e.getMessage());
+            return res;
+        }
+    }
+    public Boolean createProductCategoryKey(List<Long> categoryIds,Long productId ){
+        try{
+            EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            entityManager.getTransaction().begin();
+            for(Long categoryId:categoryIds){
+                Query productCategoryKeyExist=entityManager.createQuery("SELECT pck FROM ProductToProductCategoryKey pck WHERE pck.productId=:productId AND pck.productCategoryId=:categoryId");
+                productCategoryKeyExist.setParameter("productId",productId);
+                productCategoryKeyExist.setParameter("categoryId",categoryId);
+                List<ProductToProductCategoryKey> productCategoryExistRES=productCategoryKeyExist.getResultList();
+                if(productCategoryExistRES.size()==0){//non exist
+                    ProductToProductCategoryKey productToProductCategoryKey=new ProductToProductCategoryKey();
+                    productToProductCategoryKey.setProductId(productId);
+                    productToProductCategoryKey.setProductCategoryId(categoryId);
+                    productToProductCategoryKeyRepository.save(productToProductCategoryKey);
+                }
+
+            }
+            entityManager.getTransaction().commit();
+            return true;
+        }
+        catch (Exception e){
             logger.error(e.getMessage());
             return false;
         }
-
-        entityManager.getTransaction().commit();
+    }
+    public List<Product> getProductsByCategoryId(long categoryId){
+        try{
+            EntityManagerFactory entityManagerFactory = entityManagerFactoryBean.getObject();
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            entityManager.getTransaction().begin();
+            Query query=entityManager.createQuery("SELECT p FROM Product p WHERE id IN (SELECT ptpck.productId FROM ProductToProductCategoryKey ptpck WHERE ptpck.productCategoryId=:categoryId)");
+            query.setParameter("categoryId",categoryId);
+            entityManager.getTransaction().commit();
+            return query.getResultList();
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            return null;
+        }
     }
 }

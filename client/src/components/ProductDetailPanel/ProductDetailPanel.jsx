@@ -6,10 +6,13 @@ import { useState } from 'react';
 import { getProductDetailByClickAction } from '../../actions/productActions';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { addToCartAction } from '../../actions/cartItemActions';
 
 const ProductDetailPanel = () => {
     const dispatch=useDispatch();
     const selectedProductStore=useSelector(state=>state.selectedProduct);
+    const currentUserStore=useSelector(state=>state.currentUser);
+
     const [selectedProduct,setSelectedProduct]=useState({
         name:'Loading...',
         description:'',
@@ -28,6 +31,10 @@ const ProductDetailPanel = () => {
         
     },[selectedProductStore]);
     //useSelector
+    function handleAddToCart(){
+        //user store doesn't have id, bug!!
+        dispatch(addToCartAction(currentUserStore.user.id,selectedProductStore.id,document.getElementById("item-quantity").value))
+    }
     return (<main>
         {/* breadcrumb area start */}
         <div className="breadcrumb-area">
@@ -116,10 +123,10 @@ const ProductDetailPanel = () => {
                                         </div>
                                         <div className="quantity-cart-box d-flex align-items-center">
                                             <div className="quantity">
-                                                <div className="pro-qty"><input type="text" defaultValue={1} /></div>
+                                                <div className="pro-qty" ><input id='item-quantity' type="text" defaultValue={1} /></div>
                                             </div>
                                             <div className="action_link">
-                                                <a className="buy-btn" href="#"><i className="ion-bag" />Add to cart</a>
+                                                <a className="buy-btn" href="#" onClick={handleAddToCart}><i className="ion-bag" />Add to cart</a>
                                             </div>
                                         </div>
                                         <div className="pro-size mb-26 mt-26">

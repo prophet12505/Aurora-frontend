@@ -5,6 +5,7 @@ import lombok.Data;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name="user")
@@ -24,8 +25,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name="create_date", updatable = false,columnDefinition = "timestamp default current_timestamp")
-    private LocalDateTime createDate;
+    @Column(name="create_date", updatable = false , columnDefinition = "timestamp default current_timestamp")
+    private Date createDate=new Date();
 
     //new added
     @Column(name = "email_is_verified",columnDefinition = "Boolean default false")

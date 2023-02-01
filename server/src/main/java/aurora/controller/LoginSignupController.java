@@ -73,7 +73,7 @@ public class LoginSignupController {
                 return new LoginResDTO(false,"Login failed : Email is not verified");
             }
             else{
-                return new LoginResDTO(true,"",queryResUser.getName(),queryResUser.getEmail());
+                return new LoginResDTO(true,"",queryResUser.getName(),queryResUser.getEmail(),queryResUser);
             }
         }
         catch (Exception e){
@@ -125,7 +125,7 @@ public class LoginSignupController {
         try{
 
             User res= userService.getUserByEmailToken(token);
-            return new LoginResDTO(true,"",res.getName(),res.getEmail());
+            return new LoginResDTO(true,"",res.getName(),res.getEmail(),res);
         }
         catch (Exception e){
             return new LoginResDTO(false,e.getMessage());

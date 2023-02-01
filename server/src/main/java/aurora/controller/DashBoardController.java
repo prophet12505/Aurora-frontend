@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class DashBoardController {
     //    product related
@@ -21,13 +23,19 @@ public class DashBoardController {
         try{
             System.out.println("createProductDTO received");
             //System.out.println(createProductDTO);
-            productService.createAProduct(createProductDTO);
-            return new GeneralMessageDTO("create product success", Constants.CREATE_A_PRODUCT);
+            Long productId=productService.createAProduct(createProductDTO);
+            List<Long> categoryIds=productService.createProductCategory(createProductDTO.getCategory());
+            Boolean productToProductCategoryKeyRES=productService.createProductCategoryKey(categoryIds,productId);
+            if(productToProductCategoryKeyRES){
+                return new GeneralMessageDTO("create product success", Constants.CREATE_A_PRODUCT);
+            }
+            else{
+                return new GeneralMessageDTO("create product failed", Constants.CREATE_A_PRODUCT,false);
+            }
         }
         catch (Exception e){
             return new GeneralMessageDTO(e.toString(),"create-a-product");
         }
-
     }
     @GetMapping("create-a-product")
     public GeneralMessageDTO getCreateAProduct(){
@@ -38,7 +46,6 @@ public class DashBoardController {
         catch (Exception e){
             return new GeneralMessageDTO(e.toString(),"create-a-product");
         }
-
     }
 
 }

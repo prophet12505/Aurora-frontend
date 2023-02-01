@@ -1,8 +1,8 @@
 import * as api from "../api";
-import { GET_ALL_PRODUCTS,GET_PRODUCT_DETAIL_BY_CLICK } from "../constants/actionTypes";
+import { GET_ALL_PRODUCTS,GET_PRODUCT_DETAIL_BY_CLICK,GET_PRODUCT_BY_CATEGORY } from "../constants/actionTypes";
 
 export const getAllProductsAction=()=>async(dispatch)=>{
-    console.log("ACTION GET_ALL_PRODUCTS");
+    //console.log("ACTION GET_ALL_PRODUCTS");
     const {data}=await api.fetchAllProducts();
     dispatch({
         type:GET_ALL_PRODUCTS,
@@ -16,6 +16,16 @@ export const getProductDetailByClickAction=(id)=>async(dispatch)=>{
     console.log(data);
     dispatch({
         type:GET_PRODUCT_DETAIL_BY_CLICK,
+        payload:data
+    });
+}
+
+export const getProductByCategoryAction=(categoryId)=>async(dispatch)=>{
+    console.log("ACTION GET_PRODUCT_BY_CATEGORY");
+    const {data}=await api.getProductByCategory(categoryId);
+    console.log(data);
+    dispatch({
+        type:GET_PRODUCT_BY_CATEGORY,
         payload:data
     });
 }

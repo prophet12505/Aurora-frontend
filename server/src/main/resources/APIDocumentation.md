@@ -12,6 +12,7 @@ back end signup up user(if not duplicated email), write email to user account
 | name     | String | name of the user     |                       |
 | email    | String | email of the user    |                       |
 | password | String | password of the user |                       |
+
 ### RESPONSE BODY(signupDTO)
 | Name             | Type    | Description                    | Required(default yes) |
 |------------------|---------|--------------------------------|-----------------------|
@@ -89,13 +90,6 @@ back end use repository quickly get by id
 ### RESPONSE BODY
 Products entity
 
-## ADD CART
-ADD CART
-### HTTP REQUEST
-GET /add-to-cart/{user_id,product_id}
-back end create a row in cart_item
-### RESPONSE BODY
-Products entity (actually it's useless, don't need to respond anything or we can use general message DTO)
 
 ## CREATE PRODUCT
 ### HTTP REQUEST
@@ -104,3 +98,39 @@ POST /create-a-product
 product
 ### RESPONSE BODY
 generalMessageDTO
+
+
+=============category related===============================
+## GET ALL CATEORY
+### HTTP REQUEST
+`GET` /categories/all
+
+### RESPONSE BODY
+List <Category>
+
+## GET PRODUCTS BY CATEGORY
+GET PRODUCTS BY CATEGORY
+### HTTP REQUEST
+`GET` /products/get-product-by-category?categoryId={categoryId}
+
+### RESPONSE BODY
+List <Product>
+
+=====================CART RELATED================================
+## ADD CART
+ADD CART
+### HTTP REQUEST
+GET /cart/add-to-cart/{userId,productId,quantity}
+back end create a row in cart_item
+### RESPONSE BODY
+CartItem entity (actually it's useless, don't need to respond anything or we can use general message DTO)
+
+## GET CART ITEMS BY USER ID
+GET CART ITEMS BY USER ID
+### HTTP REQUEST
+GET /cart/get-cart-items-by-userid?userId=userId
+return cart items list
+### RESPONSE BODY
+List<CartItems>
+
+
