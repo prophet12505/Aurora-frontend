@@ -13,9 +13,9 @@ public class ProductToProductCategoryKey {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "product_id")
-    private String productId;
+    @Column(name = "product_id", columnDefinition = "bigint")
+    private Long productId;
 
-    @Column(name = "product_category_id")
-    private  String productCategoryId;
+    @Column(name = "product_category_id", columnDefinition = "bigint")
+    private  Long productCategoryId;
 }

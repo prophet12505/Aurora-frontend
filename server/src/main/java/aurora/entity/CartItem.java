@@ -19,8 +19,11 @@ public class CartItem {
     @Column(name = "product_id")
     private Long productId;
 
-    @Column(name = "date_created")
-    private Date dateCreated;
+    @Column(name = "date_created",updatable = false,columnDefinition = "timestamp default current_timestamp")
+    private Date dateCreated=new Date();
+
+    @Column(name = "date_modified",columnDefinition = "timestamp default current_timestamp")
+    private Date dateModified=new Date();
 
     @Column(name = "user_id")
     private Long userId;

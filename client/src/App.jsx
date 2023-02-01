@@ -25,7 +25,7 @@ function App() {
     if(token){
       dispatch(keepLoginStateAction(token));
     }
-  },[state.message,state.products,state.selectedProduct]);
+  },[state.message,state.products,state.selectedProduct,state.categories,state.cartItems]);
 
 
   return (<div className="App">

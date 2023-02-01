@@ -3,20 +3,44 @@ import React from 'react';
 import "./Header.css"
 import { useSelector } from 'react-redux';
 import { useEffect,useState } from 'react';
+import { getAllCartItemsAction } from '../../actions/cartItemActions';
+import { useDispatch } from 'react-redux';
 const Header = () => {
     const currentUserStore=useSelector(state=>state.currentUser);
     const [currentUser,setCurrentUser]=useState({name:"guest "});
+    const cartItemsStore=useSelector(state=>state.cartItems);
+    const [cartItems,setCartItems]=useState([]);
+    const dispatch=useDispatch();
     useEffect(()=>{
         if(currentUserStore.name){
-            setCurrentUser({name:currentUserStore.name,loggedIn:currentUserStore.loggedIn,email:currentUserStore.email});
+            setCurrentUser({...currentUserStore.user,loggedIn:currentUserStore.loggedIn});
         }
-    },[currentUserStore])
+        
+        console.log(currentUserStore);
+        if(currentUserStore.loggedIn && cartItems.length===0){
+            console.log("dispatch get All cart items");
+            dispatch(getAllCartItemsAction(currentUserStore.user.id));
+        }
+
+    },[currentUserStore]);
+
+    useEffect(()=>{
+        setCartItems(cartItemsStore);
+    },[cartItemsStore]);
+
+    //default launch effect
+    // useEffect(()=>{
+    //     console.log("test default user effect");
+
+        
+    // },[]);
+
     function handleCheckOut(){
         localStorage.clear();
     }
+
     return (
         // header component
-        //
         <div>
             <header className="header-area">
                 {/* main header start */}
@@ -125,7 +149,26 @@ const Header = () => {
                                                     <span className="notification">2</span>
                                                 </a>
                                                 <ul className="cart-list">
-                                                    <li>
+                                                    {cartItems.map((cartItem,index)=>{
+                                                        return (
+                                                            <li key={index}>
+                                                        <div className="cart-img">
+                                                            <a href="product-details.html"><img
+                                                                src={cartItem.product.image} alt="Cart item image" /></a>
+                                                        </div>
+                                                        <div className="cart-info">
+                                                            <h4><a href="product-details.html">{cartItem.product.name}</a></h4>
+                                                            <span className="cart-qty">Qty: {cartItem.cartItem.quantity}</span>
+                                                            <span>${cartItem.product.price}</span>
+                                                        </div>
+                                                        <div className="del-icon">
+                                                            <i className="fa fa-times" />
+                                                        </div>
+                                                    </li>
+                                                        );
+                                                    })
+                                                    }
+                                                    {/* <li>
                                                         <div className="cart-img">
                                                             <a href="product-details.html"><img
                                                                 src="assets/img/cart/cart-1.jpg" alt="" /></a>
@@ -152,7 +195,7 @@ const Header = () => {
                                                         <div className="del-icon">
                                                             <i className="fa fa-times" />
                                                         </div>
-                                                    </li>
+                                                    </li> */}
                                                     <li className="mini-cart-price">
                                                         <span className="subtotal">subtotal : </span>
                                                         <span className="subtotal-price ml-auto">$110.00</span>
@@ -265,7 +308,7 @@ const Header = () => {
                                         </div>
                                         <div className="contact-top-info">
                                             <p>Contact me</p>
-                                            <a href="#"><a href="mailto:prophet12505@gmail.com">prophet12505@gmail.com</a></a>
+                                            <a href="mailto:prophet12505@gmail.com">prophet12505@gmail.com</a>
                                         </div>
                                     </div>
                                 </div>

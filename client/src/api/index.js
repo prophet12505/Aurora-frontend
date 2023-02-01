@@ -71,3 +71,51 @@ export const keepLoginState=(token)=>{
         console.log(error);
     }
 }
+
+export const getAllCategories=()=>{
+    try {
+        const res=axios.get(url+"/categories/all");
+        return res;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getProductByCategory=(categoryId)=>{
+    try {
+        const res=axios.get(url+"/get-product-by-category",{
+            params:{
+                categoryId:categoryId
+            }
+        });
+        return res;
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const addToCart=(userId,productId,quantity)=>{
+    try{
+        const res=axios.get(url+"/cart/add-to-cart",{
+            params:{
+                userId:userId,
+                productId:productId,
+                quantity:quantity
+            }
+        });
+        return res;
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const getAllCartItems=(userId)=>{
+    try {
+        const res=axios.get(url+"/cart/get-cart-items-by-userid",{
+            params:{
+                userId:userId
+            }
+        });
+        return res;
+    } catch (error) {
+        console.log(error);
+    }
+}
