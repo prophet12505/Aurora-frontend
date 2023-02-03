@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const url='http://localhost:8080/create-a-product'
+
+//local url
+//const url='http://localhost:8080/create-a-product'
+//heroku url
+const url='https://aurora--online-shopping-websit.herokuapp.com/create-a-product'
 
 // const url="https://sirus--social-media.herokuapp.com/posts"//hosted on heroku
 
