@@ -1,5 +1,8 @@
 import axios from "axios"
-const url="http://localhost:8080"
+//local url
+//const url="http://localhost:8080";
+//heroku url
+const url="https://aurora--online-shopping-websit.herokuapp.com";
 // products 
 export const fetchAllProducts=()=>{
     try {
