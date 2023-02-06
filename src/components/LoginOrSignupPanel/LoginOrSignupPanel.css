@@ -1,0 +1,8 @@
+#login-message{
+    display: none;
+    color: rgba(255, 42, 42, 0.908);
+}
+#signup-message{
+    display: none;
+    color: rgba(255, 42, 42, 0.908);
+}
