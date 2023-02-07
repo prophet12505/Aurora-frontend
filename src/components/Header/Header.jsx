@@ -60,7 +60,7 @@ const Header = () => {
                                     <div className="header-top-settings">
                                         <ul className="nav align-items-center">
                                             <li className="account-settings">
-                                                {currentUser?"Hello, "+currentUser.name+" ":"Hello, guest"+" "}
+                                                {currentUser?"Hello, "+(currentUser.name?currentUser.name:"guest")+" ":"Hello, guest"+" "}
                                                 {/* My Account */}
                                                 <i className="fa fa-angle-down" />
                                                 <ul className="dropdown-list account-list">
