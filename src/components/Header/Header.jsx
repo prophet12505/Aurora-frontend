@@ -32,7 +32,7 @@ const Header = () => {
     //get currentUser
     const state=useSelector(state=>state);
     useEffect(()=>{
-        const currentUserStorage=localStorage.getItem("currentUser");
+        const currentUserStorage=JSON.parse(localStorage.getItem('currentUser'));
         if(currentUserStorage)
         setCurrentUser(currentUserStorage);
       },[state]);

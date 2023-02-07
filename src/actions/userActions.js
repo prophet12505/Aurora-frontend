@@ -2,7 +2,7 @@ import * as api from "../api";
 import { LOGIN,SIGNUP,VERIFY_EMAIL,KEEP_LOGIN_STATE } from "../constants/actionTypes";
 export const loginAction=(userLoginData)=>async(dispatch)=>{
     console.log("ACTION LOGIN");
-    const {data}=await api.login(userLoginData);
+    const {data} = await api.login(userLoginData);
     dispatch({
         type:LOGIN,
         payload:data

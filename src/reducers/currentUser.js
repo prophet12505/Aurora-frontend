@@ -10,7 +10,8 @@ export default (currentUser={loggedIn:false},action)=>{
             if(action.payload && action.payload.loggedIn){
                 
                 localStorage.setItem('userToken',btoa(action.payload.email));
-                localStorage.setItem('currentUser',action.payload);
+
+                localStorage.setItem('currentUser',JSON.stringify(action.payload));
                 //console.log("token loaded: "+localStorage.getItem('userToken'));
             }
             return action.payload;
