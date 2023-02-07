@@ -69,7 +69,12 @@ const ShopListPanel = () => {
                             {/* product item list start */}
                             <div className="shop-product-wrap grid-view row pt-40">
                                 {/* product single item start */}
-                                {products.map((product,index)=><ShopListCard product={product} key={index}/>)}
+                                {
+                                    
+                                    products && products.map((product,index)=><ShopListCard product={product} key={index}/>)
+                                    
+                                
+                                }
 
 
                                 
