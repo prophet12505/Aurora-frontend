@@ -5,9 +5,10 @@ import { useSelector } from 'react-redux';
 import { useEffect,useState } from 'react';
 import { getAllCartItemsAction } from '../../actions/cartItemActions';
 import { useDispatch } from 'react-redux';
+
 const Header = () => {
     const currentUserStore=useSelector(state=>state.currentUser);
-    const [currentUser,setCurrentUser]=useState({name:"guest "});
+    const [currentUser,setCurrentUser]=useState({name:"guest ",loggedIn:false});
     const cartItemsStore=useSelector(state=>state.cartItems);
     const [cartItems,setCartItems]=useState([]);
     const dispatch=useDispatch();
@@ -28,12 +29,13 @@ const Header = () => {
         setCartItems(cartItemsStore);
     },[cartItemsStore]);
 
-    //default launch effect
-    // useEffect(()=>{
-    //     console.log("test default user effect");
-
-        
-    // },[]);
+    //get currentUser
+    const state=useSelector(state=>state);
+    useEffect(()=>{
+        const currentUserStorage=localStorage.getItem("currentUser");
+        if(currentUserStorage)
+        setCurrentUser(currentUserStorage);
+      },[state]);
 
     function handleCheckOut(){
         localStorage.clear();
@@ -58,7 +60,7 @@ const Header = () => {
                                     <div className="header-top-settings">
                                         <ul className="nav align-items-center">
                                             <li className="account-settings">
-                                                {"Hello, "+currentUser.name+" "}
+                                                {currentUser?"Hello, "+currentUser.name+" ":"Hello, guest"+" "}
                                                 {/* My Account */}
                                                 <i className="fa fa-angle-down" />
                                                 <ul className="dropdown-list account-list">

@@ -20,12 +20,19 @@ function App() {
   //any state changes would be verified and keeped user state alive
   
   const state=useSelector(state=>state);
-  useEffect(()=>{
-    const token= localStorage.getItem('userToken');
-    if(token){
-      dispatch(keepLoginStateAction(token));
-    }
-  },[state.message,state.products,state.selectedProduct,state.categories,state.cartItems]);
+  // useEffect(()=>{
+  //   const token= localStorage.getItem('userToken');
+  //   if(token){
+  //     dispatch(keepLoginStateAction(token));
+  //   }
+  // },[state.message,state.products,state.selectedProduct,state.categories,state.cartItems]);
+  // useEffect(()=>{
+  //   const token= localStorage.getItem('userToken');
+  //   if(token){
+  //     dispatch(keepLoginStateAction(token));
+  //   }
+  // },[state.message,state.products,state.selectedProduct,state.categories,state.cartItems]);
+ 
 
 
   return (<div className="App">
