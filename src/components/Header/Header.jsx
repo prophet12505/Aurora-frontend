@@ -20,13 +20,18 @@ const Header = () => {
             setCurrentUser({...currentUserStore.user,loggedIn:currentUserStore.loggedIn});
         }
         
+    // this is a infinite loop 
+   
+
+    },[currentUserStore]);
+    // dispatch get cartItems when element is mounted 
+    useEffect(()=>{
         console.log(currentUserStore);
-        if(currentUserStore.loggedIn && cartItems.length===0){
+        if(currentUserStore.loggedIn && cartItems.length===0 ){
             console.log("dispatch get All cart items");
             dispatch(getAllCartItemsAction(currentUserStore.user.id));
         }
-
-    },[currentUserStore]);
+    })
 
     useEffect(()=>{
         setCartItems(cartItemsStore);
@@ -221,13 +226,13 @@ const Header = () => {
                                                 Graphic Card-6
                                                 CPU-7  */}
 
-                                                <li onClick={dispatch(getProductByCategoryAction(5))}><a href="/" >Laptop</a>
+                                                <li onClick={()=>{dispatch(getProductByCategoryAction(5))}}><a href="/" >Laptop</a>
                                                     
                                                 </li>
-                                                <li onClick={dispatch(getProductByCategoryAction(6))}><a href="/">Graphic Card</a>
+                                                <li onClick={()=>{dispatch(getProductByCategoryAction(6))}}><a href="/">Graphic Card</a>
                                                     
                                                 </li>
-                                                <li onClick={dispatch(getProductByCategoryAction(7))}><a href="/">CPU</a>
+                                                <li onClick={()=>{dispatch(getProductByCategoryAction(7))}}><a href="/">CPU</a>
                                                     
                                                 </li>
                                                 <li><a href="contact-us.html">Contact us</a></li>
