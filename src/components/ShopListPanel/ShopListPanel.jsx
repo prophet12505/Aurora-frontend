@@ -43,7 +43,7 @@ const ShopListPanel = () => {
                                                 <a href="#" data-target="list-view"><i className="fa fa-list" /></a>
                                             </div>
                                             <div className="product-amount">
-                                                <p>Showing 1–16 of 21 results</p>
+                                                <p>Showing 1–{products.length} of {products.length} results</p>
                                             </div>
                                         </div>
                                     </div>

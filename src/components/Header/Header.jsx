@@ -151,7 +151,7 @@ const Header = () => {
                                             <li className="mini-cart-wrap">
                                                 <a href="cart.html">
                                                     <i className="ion-bag" />
-                                                    <span className="notification">2</span>
+                                                    <span className="notification">{cartItems.length}</span>
                                                 </a>
                                                 <ul className="cart-list">
                                                     {cartItems.map((cartItem,index)=>{
