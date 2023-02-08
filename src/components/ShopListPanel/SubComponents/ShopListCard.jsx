@@ -1,4 +1,5 @@
 import React from 'react'
+import "./ShopListCard.css"
 import {useSelector} from "react-redux";
 import { getProductDetailByClickAction } from '../../../actions/productActions';
 import {useDispatch} from "react-redux"
@@ -33,7 +34,7 @@ return (
                                         <div className="product-thumb">
                                             <a href={'/products/details?id='+product.id} >
                                                 {/* <img src="assets/img/product/product-1.jpg" alt="" /> */}
-                                                <img src={product.image}  alt="product image" />
+                                                <img class="product-image" src={product.image}  alt="product image" />
                                                 
                                             </a>
                                             <div className="add-to-links">
@@ -75,7 +76,7 @@ return (
                                         <div className="product-thumb">
                                             <a href={'/products/details?id='+product.id}>
                                                 {/* <img src="assets/img/product/product-1.jpg" alt="" /> */}
-                                                <img src={product.image} alt="product image" />
+                                                <img class="product-image" src={product.image} alt="product image" />
                                             </a>
                                             <div className="product-badge product-badge__2">
                                                 <div className="product-label new">

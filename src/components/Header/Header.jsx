@@ -7,6 +7,7 @@ import { getAllCartItemsAction } from '../../actions/cartItemActions';
 import { useDispatch } from 'react-redux';
 // import { keepLoginStateActi } from '../../api';
 import { keepLoginStateAction } from '../../actions/userActions';
+import { getProductByCategoryAction } from '../../actions/productActions';
 
 const Header = () => {
     const currentUserStore=useSelector(state=>state.currentUser);
@@ -33,17 +34,7 @@ const Header = () => {
 
     //get currentUser
     const state=useSelector(state=>state);
-    // useEffect(()=>{
-    //     if(!currentUser && !currentUser.loggedIn){
-    //         const currentUserStorage=JSON.parse(localStorage.getItem('currentUser'));
-    //         if(currentUserStorage)
-    //         {
-    //             setCurrentUser(currentUserStorage);
-    //             //update currentUserStore
-    //             //dispatch(keepLoginStateAction(currentUserStorage));
-    //         }
-    //     }
-    // },[currentUser]);
+
     useEffect(()=>{
         if(state.currentUser && !state.currentUser.loggedIn){
             //no longer loggedin
@@ -87,8 +78,8 @@ const Header = () => {
                                                     {currentUser.loggedIn &&(<li><a onClick={handleCheckOut} href="/">log out</a></li>)}
                                                 </ul>
                                             </li>
-                                          
-                                         
+                                        
+                                        
                                         </ul>
                                     </div>
                                 </div>
@@ -216,73 +207,30 @@ const Header = () => {
                                         {/* main menu navbar start */}
                                         <nav className="desktop-menu">
                                             <ul>
-                                                <li className="active"><a href="/">Home <i
-                                                    className="fa fa-angle-down" /></a>
-                                                    <ul className="dropdown">
-                                                        <li><a href="index.html">Home version 01</a></li>
+                                                <li className="active"><a href="/">Home</a>
+                                                    {/* <ul className="dropdown">
+                                                    
+                                                        <li><a href="index.html">Home version 01<i
+                                                    className="fa fa-angle-down" /></a></li>
                                                         <li><a href="index-2.html">Home version 02</a></li>
                                                         <li><a href="index-3.html">Home version 03</a></li>
                                                         <li><a href="index-4.html">Home version 04</a></li>
                                                         <li><a href="index-5.html">Home version 05</a></li>
                                                         <li><a href="index-6.html">Home version 06</a></li>
-                                                    </ul>
+                                                    </ul> */}
                                                 </li>
-                                                <li><a href="/">pages <i className="fa fa-angle-down" /></a>
-                                                    <ul className="megamenu dropdown">
-                                                        <li className="mega-title"><a href="#">column 01</a>
-                                                            <ul>
-                                                                <li><a href="shop.html">shop grid left
-                                                                    sidebar</a></li>
-                                                                <li><a href="shop-grid-right-sidebar.html">shop grid
-                                                                    right
-                                                                    sidebar</a></li>
-                                                                <li><a href="shop-list-left-sidebar.html">shop list left
-                                                                    sidebar</a></li>
-                                                                <li><a href="shop-list-right-sidebar.html">shop list
-                                                                    right
-                                                                    sidebar</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li className="mega-title"><a href="#">column 02</a>
-                                                            <ul>
-                                                                <li><a href="product-details.html">product details</a>
-                                                                </li>
-                                                                <li><a href="product-details-affiliate.html">product
-                                                                    details
-                                                                    affiliate</a></li>
-                                                                <li><a href="product-details-variable.html">product
-                                                                    details
-                                                                    variable</a></li>
-                                                                <li><a href="product-details-group.html">product details
-                                                                    group</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li className="mega-title"><a href="#">column 03</a>
-                                                            <ul>
-                                                                <li><a href="cart.html">cart</a></li>
-                                                                <li><a href="checkout.html">checkout</a></li>
-                                                                <li><a href="compare.html">compare</a></li>
-                                                                <li><a href="wishlist.html">wishlist</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li className="mega-title"><a href="#">column 04</a>
-                                                            <ul>
-                                                                <li><a href="my-account.html">my-account</a></li>
-                                                                <li><a href="login-register.html">login-register</a>
-                                                                </li>
-                                                                <li><a href="about-us.html">about us</a></li>
-                                                                <li><a href="contact-us.html">contact us</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
+                                                {/* I called the getProductByCategoryIdAction, the schema in database should remain:
+                                                Laptop-5 
+                                                Graphic Card-6
+                                                CPU-7  */}
+
+                                                <li onClick={dispatch(getProductByCategoryAction(5))}><a href="/" >Laptop</a>
+                                                    
                                                 </li>
-                                                <li><a href="shop.html">shop <i className="fa fa-angle-down" /></a>
-                                                    <ul className="dropdown">
-                                                        
-                                                    </ul>
+                                                <li onClick={dispatch(getProductByCategoryAction(6))}><a href="/">Graphic Card</a>
+                                                    
                                                 </li>
-                                                <li><a href="blog-left-sidebar.html">Blog <i
-                                                    className="fa fa-angle-down" /></a>
+                                                <li onClick={dispatch(getProductByCategoryAction(7))}><a href="/">CPU</a>
                                                     
                                                 </li>
                                                 <li><a href="contact-us.html">Contact us</a></li>
