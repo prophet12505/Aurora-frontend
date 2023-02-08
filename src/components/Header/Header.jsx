@@ -113,26 +113,23 @@ const Header = () => {
                                                     <input type="text" className="search-field"
                                                         placeholder="Enter your search key" />
                                                 </div>
-                                                {/* <div className="search-select-box">
+                                                <div className="search-select-box">
                                                     <select>
-                                                        <optgroup label="organic food">
+                                                        <optgroup label="Category">
                                                             <option value="volvo">All categories</option>
-                                                            <option value="saab">watch</option>
-                                                            <option value="saab">air cooler</option>
-                                                            <option value="saab">audio</option>
-                                                            <option value="saab">speakers</option>
-                                                            <option value="saab">amplifires</option>
+                                                            <option value="saab">Laptop</option>
+                                                            <option value="saab">Graphic Card</option>
+                                                            <option value="saab">CPU</option>
+                                            
                                                         </optgroup>
-                                                        <optgroup label="Fashion">
-                                                            <option value="mercedes">Womens tops</option>
-                                                            <option value="audi">Jeans</option>
-                                                            <option value="audi">Shirt</option>
-                                                            <option value="audi">Pant</option>
-                                                            <option value="audi">Watch</option>
-                                                            <option value="audi">Handbag</option>
+                                                        <optgroup label="Brand">
+                                                            <option value="mercedes">All brands</option>
+                                                            <option value="audi">Dell</option>
+                                                            <option value="audi">Asus</option>
+                                                            <option value="audi">Nvidia</option>
                                                         </optgroup>
                                                     </select>
-                                                </div> */}
+                                                </div>
                                                 <div className="search-btn">
                                                     <button><i className="ion-ios-search" /></button>
                                                 </div>
