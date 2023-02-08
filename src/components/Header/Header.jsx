@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import { useEffect,useState } from 'react';
 import { getAllCartItemsAction } from '../../actions/cartItemActions';
 import { useDispatch } from 'react-redux';
+// import { keepLoginStateActi } from '../../api';
+import { keepLoginStateAction } from '../../actions/userActions';
 
 const Header = () => {
     const currentUserStore=useSelector(state=>state.currentUser);
@@ -31,11 +33,24 @@ const Header = () => {
 
     //get currentUser
     const state=useSelector(state=>state);
+    // useEffect(()=>{
+    //     if(!currentUser && !currentUser.loggedIn){
+    //         const currentUserStorage=JSON.parse(localStorage.getItem('currentUser'));
+    //         if(currentUserStorage)
+    //         {
+    //             setCurrentUser(currentUserStorage);
+    //             //update currentUserStore
+    //             //dispatch(keepLoginStateAction(currentUserStorage));
+    //         }
+    //     }
+    // },[currentUser]);
     useEffect(()=>{
-        const currentUserStorage=JSON.parse(localStorage.getItem('currentUser'));
-        if(currentUserStorage)
-        setCurrentUser(currentUserStorage);
-      },[state]);
+        if(state.currentUser && !state.currentUser.loggedIn){
+            //no longer loggedin
+            const currentUserStorage=JSON.parse(localStorage.getItem('currentUser'));
+            dispatch(keepLoginStateAction(currentUserStorage))
+        }
+    },[state]);
 
     function handleCheckOut(){
         localStorage.clear();

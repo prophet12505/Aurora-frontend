@@ -31,7 +31,7 @@ function App() {
   //   if(token){
   //     dispatch(keepLoginStateAction(token));
   //   }
-  // },[state.message,state.products,state.selectedProduct,state.categories,state.cartItems]);
+  // },[state]);
  
 
 

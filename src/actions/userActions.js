@@ -26,10 +26,11 @@ export const verifyEmailAction=(token)=>async(dispatch)=>{
         payload:data
     });
 }
-export const keepLoginStateAction=(token)=>async(dispatch)=>{
+export const keepLoginStateAction=(data)=>async(dispatch)=>{
    // console.log("ACTION KEEP_LOGIN_STATE");
    // console.log("token:"+token);
-    const {data}=await api.keepLoginState(token);
+   // const {data}=await api.keepLoginState(token);
+   //const data=JSON.parse(localStorage.getItem('currentUser'));
     dispatch({
         type:KEEP_LOGIN_STATE,
         payload:data

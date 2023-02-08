@@ -61,16 +61,7 @@ const CartPanel = () => {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td className="pro-thumbnail"><a href="#"><img className="img-fluid" src="assets/img/product/product-1.jpg" alt="Product" /></a></td>
-                                    <td className="pro-title"><a href="#">Endeavor Daytrip</a></td>
-                                    <td className="pro-price"><span>$295.00</span></td>
-                                    <td className="pro-quantity">
-                                        <div className="pro-qty"><input type="text" defaultValue={1} /></div>
-                                    </td>
-                                    <td className="pro-subtotal"><span>$295.00</span></td>
-                                    <td className="pro-remove"><a href="#"><i className="fa fa-trash-o" /></a></td>
-                                </tr>
+                                
                                 {
                                                 
                                                 cartItems.map((cartItem,index)=>{

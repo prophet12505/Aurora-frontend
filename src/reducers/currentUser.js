@@ -18,9 +18,13 @@ export default (currentUser={loggedIn:false},action)=>{
             }
         case KEEP_LOGIN_STATE:
             {
-               // console.log("KEEP_LOGIN_STATE REDUCER");
-               // console.log(action.payload);
+                console.log("KEEP_LOGIN_STATE REDUCER");
+                console.log(action.payload);
+               
+               if(action.payload)
                 return action.payload;
+                else
+                return currentUser;
             }
         default:
                 return currentUser;

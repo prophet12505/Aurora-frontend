@@ -62,14 +62,15 @@ export const verifyEmail=(token)=>{
         console.log(error);
     }
 }
-export const keepLoginState=(token)=>{
+export const keepLoginState=(data)=>{
     try {
-        const res=axios.get(url+"/keep-login-state",{
-            params:{
-                token:token
-            }
-        })
-        return res;
+        //const res=axios.get(url+"/keep-login-state",{
+            // params:{
+            //     token:token
+            // }
+        //})
+
+        return data;
     } catch (error) {
         console.log(error);
     }
