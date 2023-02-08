@@ -54,31 +54,31 @@ const SideBar = () => {
                 <li>
                     <div className="custom-control custom-radio">
                         <input type="radio" name="priceFilter" className="custom-control-input" id="customCheck11" />
-                        <label className="custom-control-label" htmlFor="customCheck11">$7.00 - $9.00 (2)</label>
+                        <label className="custom-control-label" htmlFor="customCheck11">$0.00 - $50.00 (2)</label>
                     </div>
                 </li>
                 <li>
                     <div className="custom-control custom-radio">
                         <input type="radio" name="priceFilter" className="custom-control-input" id="customCheck21" />
-                        <label className="custom-control-label" htmlFor="customCheck21">$10.00 - $12.00 (3)</label>
+                        <label className="custom-control-label" htmlFor="customCheck21">$50.00 - $100.00 (3)</label>
                     </div>
                 </li>
                 <li>
                     <div className="custom-control custom-radio">
                         <input type="radio" name="priceFilter" className="custom-control-input" id="customCheck31" />
-                        <label className="custom-control-label" htmlFor="customCheck31">$17.00 - $20.00 (3)</label>
+                        <label className="custom-control-label" htmlFor="customCheck31">$100.00 - $150.00 (3)</label>
                     </div>
                 </li>
                 <li>
                     <div className="custom-control custom-radio">
                         <input type="radio" name="priceFilter" className="custom-control-input" id="customCheck41" />
-                        <label className="custom-control-label" htmlFor="customCheck41"> $21.00 - $22.00 (1)</label>
+                        <label className="custom-control-label" htmlFor="customCheck41"> $150.00 - $200.00 (1)</label>
                     </div>
                 </li>
                 <li>
                     <div className="custom-control custom-radio">
                         <input type="radio" name="priceFilter" className="custom-control-input" id="customCheck51" />
-                        <label className="custom-control-label" htmlFor="customCheck51">$25.00 - $30.00 (3)</label>
+                        <label className="custom-control-label" htmlFor="customCheck51"> >= $200.00 (3)</label>
                     </div>
                 </li>
             </ul>
@@ -127,14 +127,14 @@ const SideBar = () => {
             <div className="banner-statistics">
                 <div className="img-container">
                     <a href="#">
-                        <img src="assets/img/banner/cms_1.1.jpg" alt="" />
+                        <img src="assets/img/banner/tech-banner-1.png" alt="banner 1" />
                     </a>
                 </div>
             </div>
             <div className="banner-statistics">
                 <div className="img-container">
                     <a href="#">
-                        <img src="assets/img/banner/cms_1.2.jpg" alt="" />
+                        <img src="assets/img/banner/tech-banner-2.jpg" alt="banner 2" />
                     </a>
                 </div>
             </div>
