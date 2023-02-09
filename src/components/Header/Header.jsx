@@ -209,6 +209,8 @@ const Header = () => {
                                         {/* main menu navbar start */}
                                         <nav className="desktop-menu">
                                             <ul>
+                                            <li><a href="https://github.com/prophet12505/Aurora----online-shopping-website"><i id="github-icon" class="fa-brands fa-github"></i></a></li>
+                                         
                                                 <li className="active"><a href="/">Home</a>
                                                     {/* <ul className="dropdown">
                                                     
@@ -235,8 +237,7 @@ const Header = () => {
                                                 <li onClick={()=>{dispatch(getProductByCategoryAction(7))}}><a href="/">CPU</a>
                                                     
                                                 </li>
-                                                <li><a href="https://github.com/prophet12505/Aurora----online-shopping-website">Source Code</a></li>
-                                            </ul>
+                                                   </ul>
                                         </nav>
                                         {/* main menu navbar end */}
                                     </div>
