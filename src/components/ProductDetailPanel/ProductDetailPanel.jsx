@@ -1,4 +1,6 @@
 import React from 'react';
+
+import SideMessage from '../Message/SideMessage';
 import { useSelector } from 'react-redux';
 import products from '../../reducers/products';
 import { useEffect } from 'react';
@@ -22,8 +24,11 @@ const ProductDetailPanel = () => {
         price:'0',
         unitInStock:99,
     });
+    const [noticeMessage,setNoticeMessage]=useState(
+        "Default notice"
+    );
 
-    const location = useLocation();
+const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const id = queryParams.get('id');
     useEffect(()=>{
@@ -36,12 +41,27 @@ const ProductDetailPanel = () => {
         }
         
     },[selectedProductStore]);
-    //useSelector
+    function showMessage(messageToShow){
+        setNoticeMessage(messageToShow);
+            document.getElementById("side-message").style.display="block";
+            setTimeout(()=>{
+                document.getElementById("side-message").style.display="none";
+            },4000);
+    }
     function handleAddToCart(){
         //user store doesn't have id, bug!!
-        dispatch(addToCartAction(currentUserStore.user.id,selectedProductStore.id,document.getElementById("item-quantity").value))
+        if(!currentUserStore.loggedIn)
+        {
+            showMessage("Sorry, you'll have to login to proceed!");
+        }
+        else{
+            showMessage("You have successfully added the item to cart!");
+            dispatch(addToCartAction(currentUserStore.user.id,selectedProductStore.id,document.getElementById("item-quantity").value));
+        }
+        
     }
     return (<main>
+        <SideMessage message={noticeMessage}></SideMessage>
         {/* breadcrumb area start */}
         <div className="breadcrumb-area">
             <div className="container">

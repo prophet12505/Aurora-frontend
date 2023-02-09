@@ -10,6 +10,8 @@ import CheckOutPanel from "./components/CheckOutPanel/CheckOutPanel";
 import ProductDetailPanel from "./components/ProductDetailPanel/ProductDetailPanel";
 import LoginOrSignupPanel from './components/LoginOrSignupPanel/LoginOrSignupPanel';
 import EmailVerificationSuccessPanel from './components/LoginOrSignupPanel/EmailVerificationSuccessPanel';
+import SideMessage from './components/Message/SideMessage';
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState,useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -44,6 +46,7 @@ function App() {
             <li><a href="/login-or-signup">LoginOrSignupPanel</a></li>
             <li><a href="/product-detail">ProductDetailPanel</a></li>
         </ul> */}
+            
             <Routes>
                     <Route path="/" element={<ShopListPanel></ShopListPanel>} />
                     <Route path="/verify-email" element={<EmailVerificationSuccessPanel/>}></Route>

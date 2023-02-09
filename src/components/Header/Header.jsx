@@ -39,7 +39,7 @@ const Header = () => {
 
     //get currentUser
     const state=useSelector(state=>state);
-
+    let cartSum=0;
     useEffect(()=>{
         if(state.currentUser && !state.currentUser.loggedIn){
             //no longer loggedin
@@ -159,7 +159,8 @@ const Header = () => {
                                                     <span className="notification">{cartItems.length}</span>
                                                 </a>
                                                 <ul className="cart-list">
-                                                    {cartItems.map((cartItem,index)=>{
+                                                    {cartItems.length && cartItems.map((cartItem,index)=>{
+                                                        cartSum+=cartItem.product.price;
                                                         return (
                                                             <li key={index}>
                                                         <div className="cart-img">
@@ -181,7 +182,7 @@ const Header = () => {
                                                     
                                                     <li className="mini-cart-price">
                                                         <span className="subtotal">subtotal : </span>
-                                                        <span className="subtotal-price ml-auto">$110.00</span>
+                                                        <span className="subtotal-price ml-auto">${cartSum}</span>
                                                     </li>
                                                     <li>
                                                         <div className="mini-cart-button">

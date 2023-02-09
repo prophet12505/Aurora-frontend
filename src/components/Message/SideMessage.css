@@ -1,0 +1,18 @@
+#side-message{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    /* color: antiquewhite; */
+    width: 400px;
+    /* height:100px; */
+    background-color: rgb(255, 255, 255);
+    z-index: 3;
+    font-size: 20px;
+    line-height: 40px;
+    border: 0.5px solid;
+    transition: all 1.5s;
+    /* transition-timing-function: ease; */
+    display: none;
+    overflow: hidden;
+}
