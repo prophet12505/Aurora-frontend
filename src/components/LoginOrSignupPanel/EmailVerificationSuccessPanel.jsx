@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { VERIFY_EMAIL } from '../../constants/actionTypes';
 import { verifyEmailAction } from '../../actions/userActions';
 import "./EmailVerificationSuccessPanel.css"
+import { frontend_URL } from '../../constants/URL';
 const EmailVerificationSuccessPanel = () => {
   const messageStore = useSelector(state => state.message);
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ const EmailVerificationSuccessPanel = () => {
             <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
           </svg> 
           {verifyRes}</h3></div>
-        <div className='row row-notify'><a href="/"><button className='btn'>Return to home</button></a></div>
+        <div className='row row-notify'><a href={frontend_URL+"/login-or-signup"}><button className='btn'>Login to your new account</button></a></div>
       </div>
     </div>
   )
