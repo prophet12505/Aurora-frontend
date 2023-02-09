@@ -235,7 +235,7 @@ const Header = () => {
                                                 <li onClick={()=>{dispatch(getProductByCategoryAction(7))}}><a href="/">CPU</a>
                                                     
                                                 </li>
-                                                <li><a href="contact-us.html">Contact us</a></li>
+                                                <li><a href="https://github.com/prophet12505/Aurora----online-shopping-website">Source Code</a></li>
                                             </ul>
                                         </nav>
                                         {/* main menu navbar end */}
