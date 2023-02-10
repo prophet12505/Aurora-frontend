@@ -160,7 +160,7 @@ const Header = () => {
                                                 </a>
                                                 <ul className="cart-list">
                                                     {cartItems.length && cartItems.map((cartItem,index)=>{
-                                                        cartSum+=cartItem.product.price;
+                                                        cartSum+=cartItem.product.price*cartItem.cartItem.quantity;
                                                         return (
                                                             <li key={index}>
                                                         <div className="cart-img">
@@ -211,7 +211,7 @@ const Header = () => {
                                         <nav className="desktop-menu">
                                             <ul>
                                             <li><a href="https://github.com/prophet12505/Aurora----online-shopping-website"><i id="github-icon" class="fa-brands fa-github"></i></a></li>
-                                         
+                                
                                                 <li className="active"><a href="/">Home</a>
                                                     {/* <ul className="dropdown">
                                                     
@@ -238,7 +238,7 @@ const Header = () => {
                                                 <li onClick={()=>{dispatch(getProductByCategoryAction(7))}}><a href="/">CPU</a>
                                                     
                                                 </li>
-                                                   </ul>
+                                                </ul>
                                         </nav>
                                         {/* main menu navbar end */}
                                     </div>

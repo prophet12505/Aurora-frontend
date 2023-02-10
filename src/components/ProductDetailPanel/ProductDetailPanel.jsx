@@ -44,8 +44,10 @@ const location = useLocation();
     function showMessage(messageToShow){
         setNoticeMessage(messageToShow);
             document.getElementById("side-message").style.display="block";
+            //document.getElementById("side-message").style.animation="'move-in-right' 2s ease";
             setTimeout(()=>{
-                document.getElementById("side-message").style.display="none";
+            document.getElementById("side-message").style.display="none";
+            //document.getElementById("side-message").style.animation="'move-out-right' 2s ease";
             },4000);
     }
     function handleAddToCart(){
@@ -57,6 +59,7 @@ const location = useLocation();
         else{
             showMessage("You have successfully added the item to cart!");
             dispatch(addToCartAction(currentUserStore.user.id,selectedProductStore.id,document.getElementById("item-quantity").value));
+        
         }
         
     }

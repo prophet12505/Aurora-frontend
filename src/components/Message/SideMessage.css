@@ -1,18 +1,44 @@
 #side-message{
     position: fixed;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    left: 100%;
+    padding: 10px;
+    transform: translate(-100%,-50%);
     /* color: antiquewhite; */
-    width: 400px;
+    width: 350px;
     /* height:100px; */
     background-color: rgb(255, 255, 255);
     z-index: 3;
     font-size: 20px;
     line-height: 40px;
-    border: 0.5px solid;
+    border: 1px solid rgb(146, 144, 144);
     transition: all 1.5s;
     /* transition-timing-function: ease; */
     display: none;
+    animation: "none" 2s ease; 
+    /* animation: "move-in-right" 2s ease; */
     overflow: hidden;
+    border-radius: 5px;
+    opacity: 0.95;
+}
+#side-message h2{
+    color: rgb(4, 74, 3);
+}
+
+@keyframes move-in-right {
+    0%{
+        transform: translate(50%,-50%);
+    }
+    100%{
+        transform: translate(-50%,-50%);
+    }
+    
+}
+@keyframes move-out-right {
+    0%{
+        transform: translate(-50%,-50%);
+    }
+    100%{
+        transform: translate(50%,-50%);
+    }
 }
